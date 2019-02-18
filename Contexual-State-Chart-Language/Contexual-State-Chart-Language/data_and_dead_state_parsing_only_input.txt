@@ -1,0 +1,214 @@
+data and dead states
+
+	data fields
+		Children
+			int
+            
+
+			
+				Children
+					& Dictionaries / String -> Int
+
+					literal
+						integer
+							positive
+								Data
+									345678
+							negative
+								x
+									Data
+										-876543
+								y
+									Data
+										1234567
+
+						float
+							positive
+								Data
+									3.45678
+							negative
+								Data
+									-0.876543
+						bool
+							true
+								Data
+									true
+							false
+								Data
+									false
+							nil
+								Data
+									nil
+						string
+							non empty
+								Data
+									"This is a literal\""
+							empty
+								Data
+									""
+
+					init
+						
+						int
+							Data
+								Int()
+						float
+							Data
+								Float()
+						bool
+							Data
+								Bool()
+						string
+							Data
+								String()
+						array
+							int
+								Data
+									[Int]()
+							float
+								Data
+									[Float]()
+							bool
+								Data
+									[Bool]()
+							string
+								Data
+									[String]()
+
+				Next
+					a
+					b
+					c
+				Function
+					axt4
+			string
+				Children
+				
+					literal
+						9
+							Data
+								"This is a literal\""
+					literal
+						2
+							Data
+								""
+					init
+						1
+							Data
+								String()
+						array String
+							Data
+									
+								[String]()
+					& literal / integer / positive
+					& init / int
+
+				Function
+					dddddd
+			float
+				Children
+					-literal
+						Data
+							0.0
+					-& no value
+
+					negati
+						Data
+							-0.9876543
+					ini
+						1
+							Data
+								Float()
+						array Float
+
+							Data
+								[Float]()
+
+					array
+					dead 1
+					dead 2
+						dead 2.1
+					dead 3
+					dead 45
+						dead 3.1
+				Function
+					ddd
+			bool
+				Children
+					literal
+						0
+							Data
+								false
+					dead
+						dead 4
+							dead 4.1
+							dead 5
+							dead 7
+						dead again
+					dead 0.1
+						1
+							Data
+								true
+					iit
+						1
+							Data
+								Bool()
+						array Bool
+							Data
+								[Bool]()
+				Function
+					trewgfe
+			no value
+				Data
+					nil
+			
+			Dictionaries
+				init
+					String -> Int
+						Data
+							[String: Int]()
+					String -> Float
+						Data
+							[String: Float]()
+					Int -> Bool
+						Data
+							[Int: Bool]()
+					float -> Bool
+						Data
+							[Float: Bool]()
+					bool -> String
+						Data
+							[Bool: String]()
+
+				regular
+					String -> Int
+						Data
+							["1" : 1, "2" : 2, "3", 3]
+					String -> Float
+						Data
+							["one" : 1.0, "two" : 2.0, "three", 3.0]
+					Int -> Bool
+						Data
+							[1 : true, 2 : false, 3: nil]
+					float -> Bool
+						Data
+							[1.0 : true, 2.3 : false, 3.9: nil]
+					bool -> String
+						Data
+							[true: "1.0", "false": 2.3]
+			list
+				Children
+					Ints
+						Data
+							[1, 2, 3]
+					Floats
+						Data
+							[1.0, 2.0, 3.0]
+					Bools
+						Data
+							[true, false, true]
+					Strings
+						Data
+							["1", "2", "3\\\""]
+				Function
+					fdssss

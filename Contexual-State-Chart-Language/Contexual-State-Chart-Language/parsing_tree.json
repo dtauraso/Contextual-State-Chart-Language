@@ -1,0 +1,2013 @@
+[
+  {
+    "name":           ["states", "state"],
+    "nexts":          [],
+    "start_children": [["names", "0"]],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"nothing": "null"},
+    "parents":        [["root", "0"]]
+  },
+  {           
+    "name":           ["prev_prev_indent"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"Int": "0"},
+    "parents":        []
+  },
+  {           
+    "name":           ["prev_indent"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"Int": "0"},
+    "parents":        []
+  },
+  {
+    "name":           ["prev_word"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"String":"root"},
+    "parents":        []
+  },
+  {
+    "name":           ["current_word"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"String":""},
+    "parents":        []
+  },
+  {
+    "name":           ["next_indent"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"Int": "0"},
+    "parents":        []
+  },
+  {
+    "name":           ["level_indent_stack"],
+    "nexts":          [],
+    "start_children": [["level_number", "0"],
+                       ["state_number", "0"],
+                       ["indent_number", "0"],
+                       ["max_stack_index"]],
+    "children":        [],
+    "function_name":  "returnTrue",
+    "data":           {"Int": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["level_number", "0"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"Int": "0"},
+    "parents":        []
+  },
+  {
+    "name":           ["state_number", "0"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"Int": "0"},
+    "parents":        []
+  },
+  {
+    "name":           ["indent_number", "0"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"Int": "0"},
+    "parents":        []
+  },
+    
+  {
+    "name":           ["max_stack_index"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"Int": "0"},
+    "parents":        []
+  },
+  {
+    "name":           ["i"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"Int": "0"},
+    "parents":        []
+  },
+  {
+    "name":           ["what_is_current_word_to_pre_word"],
+    "nexts":          [],
+    "start_children": [["child"],
+                       ["sibling"],
+                       ["new_parent"]],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+      {
+        "name":           ["child"],
+        "nexts":          [],
+        "start_children": [],
+        "children":       [],
+        "function_name":  "returnTrue",
+        "data":           {"Int": "null"},
+        "parents":        []
+      },
+      {
+        "name":           ["sibling"],
+        "nexts":          [],
+        "start_children": [],
+        "children":       [],
+        "function_name":  "returnTrue",
+        "data":           {"Int": "null"},
+        "parents":        []
+      },
+      {
+        "name":           ["new_parent"],
+        "nexts":          [],
+        "start_children": [],
+        "children":       [],
+        "function_name":  "returnTrue",
+        "data":           {"nothing": "null"},
+        "parents":        []
+      },
+          {
+            "name":           ["advance", "init"],
+            "nexts":          [["name", "0"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "advanceInit",
+            "data":           {"nothing": "null"},
+            "parents":        [["names", "0"]]
+          },
+  {
+    "name":           ["sparse_matrix"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"[Point: ContextState]": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["input"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"String": "parsing_only_input.txt"},
+    "parents":        []
+  },
+  {
+    "name":           ["point_table"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"[[String]: Point]": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["tlo"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"Bool": "false"},
+    "parents":        []
+  },
+      {
+        "name":           ["names", "0"],
+        "nexts":          [],
+        "start_children": [["advance", "init"]],
+        "children":       [],
+        "function_name":  "returnTrue",
+        "data":           {"nothing": "null"},
+        "parents":        [["states", "state"]]
+      },
+          {
+            "name":           ["name", "0"],
+            "nexts":          [["is link", "2"], ["is_dead_state"], ["advance", "loop"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "collectName",
+            "data":           {"nothing": "null"},
+            "parents":        [["names", "0"]]
+          },
+          {
+            "name":           ["is link", "2"],
+            "nexts":          [["advance", "loop", "link"]],
+            "start_children": [["get the next link"]],
+            "children":       [],
+            "function_name":  "isLink",
+            "data":           {"nothing": "null"},
+            "parents":        [["names", "0"]]
+          },
+
+
+
+
+
+          {
+            "name":           ["advance", "loop", "link"],
+            "nexts":          [["name", "0", "link"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "advanceLoop",
+            "data":           {"nothing": "null"},
+            "parents":        [["names", "0"]]
+          },
+          {
+            "name":           ["name", "0", "link"],
+            "nexts":          [["is link", "2"], ["not function"], ["is current word \"Function\"", "2"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "collectName",
+            "data":           {"nothing": "null"},
+            "parents":        [["names", "0"]]
+          },
+          {
+            "name":           ["not function"],
+            "nexts":          [["is_dead_state"],["advance", "loop"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "notIsCurrentWordFunction",
+            "data":           {"nothing": "null"},
+            "parents":        [["names", "0"]]
+          },
+          {
+            "name":           ["is current word \"Function\"", "2"],
+            "nexts":          [["is current word a different parent of prev word", "2"], ["advance past", "function"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "isCurrentWordFunction",
+            "data":           {"nothing": "null"},
+            "parents":        [["names", "0"]]
+          },
+
+
+          {
+            "name":           ["is current word a different parent of prev word", "2"],
+            "nexts":          [["decrease max stack index", "2"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "isCurrentWordADifferentParentOfPrevWord",
+            "data":           {"nothing": "null"},
+            "parents":        [["names", "0"]]
+          },
+
+          {
+            "name":           ["decrease max stack index", "2"],
+            "nexts":          [["advance past", "function"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "decreaseMaxStackIndex",
+            "data":           {"nothing": "null"},
+            "parents":        [["names", "0"]]
+          },
+
+
+
+
+
+
+
+
+
+
+  {
+    "name":           ["name", "state_name"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"[String]": "null"},
+    "parents":        []
+  },
+          {
+            "name":           ["is_dead_state"],
+            "nexts":          [["is link"], ["TLO", "2"], ["save dead state"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "isDeadState",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+
+
+          {
+            "name":           ["is link"],
+            "nexts":          [["advance to next state"]],
+            "start_children": [["get the next link"]],
+            "children":       [],
+            "function_name":  "isLink",
+            "data":           {"nothing": "null"},
+            "parents":        [["names", "0"]]
+          },
+
+          {
+            "name":           ["TLO", "2"],
+            "nexts":          [["end of input from dead state"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "tlo",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+
+
+          {
+            "name":           ["end of input from dead state"],
+            "nexts":          [],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "returnTrue",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+
+
+
+
+
+
+
+          {
+            "name":           ["save dead state"],
+            "nexts":          [["increment state_id for the current level", "dead state"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "saveNewState",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+          {
+            "name":           ["increment state_id for the current level", "dead state"],
+            "nexts":          [["advance to next state"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "incrementTheStateId",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+          {
+            "name":           ["advance to next state"],
+            "nexts":          [["name", "0"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "advanceLoop",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+          {
+            "name":           ["advance", "loop"],
+            "nexts":          [["is sibling"], ["is new parent"], ["is data"], ["is_children"], ["is_next"], ["name", "0"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "advanceLoop",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+
+          {
+            "name":           ["is sibling"],
+            "nexts":          [["save dead state"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "isCurrentWordASiblingOfPrevWord",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+
+
+          {
+            "name":           ["is new parent"],
+            "nexts":          [["save dead state", "2"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "isCurrentWordADifferentParentOfPrevWord",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+
+
+          {
+            "name":           ["save dead state", "2"],
+            "nexts":          [["increment state_id for the current level", "dead state", "2"], ["wind back state name from end"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "saveState",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+
+          {
+            "name":           ["increment state_id for the current level", "dead state",  "2"],
+            "nexts":          [["is current word a different parent of prev word", "2"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "incrementTheStateId",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+          
+
+
+
+
+
+
+          {
+            "name":           ["is current word a different parent of prev word", "2"],
+            "nexts":          [["is current word a state name", "2"], ["is current word \"function\""]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "isCurrentWordADifferentParentOfPrevWord",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+
+
+          {
+            "name":           ["is current word a state name", "2"],
+            "nexts":          [["wind back state name from end"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "isAStateName",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+
+
+
+
+          {
+            "name":           ["wind back state name from end"],
+            "nexts":          [["name", "0"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "windBackStateNameFromEnd",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+
+           
+
+          {
+            "name":           ["is data"],
+            "nexts":          [["save new state", "from before data"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "isData",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          }, 
+          {
+            "name":           ["save new state", "from before data"],
+            "nexts":          [["advanced past \"Data\""]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "saveNewState",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+
+          {
+            "name":           ["advanced past \"Data\""],
+            "nexts":          [["get data"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "advanceLoop",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          }, 
+
+
+         {
+            "name":           ["get data"],
+            "nexts":          [["end of input"], ["advance", "again"]],
+            "start_children": [["make structure"]],
+            "children":       [],
+            "function_name":  "returnTrue",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          }, 
+          
+
+              {
+                "name":           ["make structure"],
+                "nexts":          [],
+                "start_children": [["-"], ["#"],
+                                   ["true"], ["false"],
+                                   ["nil"],
+                                   ["\""],
+                                   ["Int"], ["Float"],
+                                   ["Bool"], ["String"],
+                                   ["Int", "2"], ["Float", "2"],
+                                   ["Bool", "2"], ["String", "2"],
+                                   ["["]],
+                "children":       [["x"],
+                                   ["structure type"],
+                                   ["structure container kind"],
+                                   ["structure"],
+                                   ["dict init key type"],
+                                   ["dict init value type"]],
+                "function_name":  "printData",
+                "data":           {"nothing": "null"},
+                "parents":        [["get data"]]
+              }, 
+
+
+                  {
+                    "name":           ["x"],
+                    "nexts":          [],
+                    "start_children": [],
+                    "children":       [],
+                    "function_name":  "returnTrue",
+                    "data":           {"Int": "0"},
+                    "parents":        [["make structure"]]
+                  }, 
+                  
+                  {
+                    "name":           ["structure type"],
+                    "nexts":          [],
+                    "start_children": [],
+                    "children":       [],
+                    "function_name":  "returnTrue",
+                    "data":           {"String": ""},
+                    "parents":        [["make structure"]]
+                  }, 
+
+                  {
+                    "name":           ["structure container kind"],
+                    "nexts":          [],
+                    "start_children": [],
+                    "children":       [],
+                    "function_name":  "returnTrue",
+                    "data":           {"String": ""},
+                    "parents":        [["make structure"]]
+                  }, 
+
+                  {
+                    "name":           ["dict init key type"],
+                    "nexts":          [],
+                    "start_children": [],
+                    "children":       [],
+                    "function_name":  "returnTrue",
+                    "data":           {"String": ""},
+                    "parents":        [["make structure"]]
+                  }, 
+                  {
+                    "name":           ["dict init value type"],
+                    "nexts":          [],
+                    "start_children": [],
+                    "children":       [],
+                    "function_name":  "returnTrue",
+                    "data":           {"String": ""},
+                    "parents":        [["make structure"]]
+                  }, 
+
+                  {
+                    "name":           ["structure"],
+                    "nexts":          [],
+                    "start_children": [],
+                    "children":       [],
+                    "function_name":  "returnTrue",
+                    "data":           {"String": ""},
+                    "parents":        [["make structure"]]
+                  }, 
+
+                              {
+                                "name":           ["-"],
+                                "nexts":          [["#"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "negative",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              }, 
+
+                              {
+                                "name":           ["#"],
+                                "nexts":          [["int"], ["#"], ["."]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "digit",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              }, 
+                              
+                              {
+                                "name":           ["."],
+                                "nexts":          [["#", "1"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "dot",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              }, 
+
+                              {
+                                "name":           ["int"],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "isKOutOfBounds",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              }, 
+
+                              {
+                                "name":           ["#", "1"],
+                                "nexts":          [["float"], ["#", "1"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "digit",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              }, 
+                              
+                              {
+                                "name":           ["float"],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "isKOutOfBounds",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              }, 
+
+
+                              {
+                                "name":           ["\""],
+                                "nexts":          [["not \" not \\"], ["\"", "2"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "doubleQuote",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"], ["key"]]
+                              },
+
+                              {
+                                "name":           ["not \" not \\"],
+                                "nexts":          [["not \" not \\"], ["\\", "2"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "notDoubleQuoteNotBackSlash",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["\\", "2"],
+                                "nexts":          [["any"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "backSlash2",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["any"],
+                                "nexts":          [["\\", "2"], ["not \" not \\"], ["\"", "2"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "any",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["\"", "2"],
+                                "nexts":          [["string"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "doubleQuote",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["string"],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "isKOutOfBounds",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+
+                              {
+                                "name":           ["true"],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "isTrue",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["false"],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "isFalse",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+                              
+
+
+                              {
+                                "name":           ["nil"],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "isNil",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+
+
+
+                              {
+                                "name":           ["Bool"],
+                                "nexts":          [["()", "1"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "isBool",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["()", "1"],
+                                "nexts":          [ ["save as false"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "parens",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["save as false"],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "saveInitFalse",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+
+                              {
+                                "name":           ["Int"],
+                                "nexts":          [["()", "2"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "isInt",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["()", "2"],
+                                "nexts":          [["save as 0"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "parens",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["save as 0"],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "saveInit0",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+
+                              {
+                                "name":           ["Float"],
+                                "nexts":          [["()", "3"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "isFloat",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["()", "3"],
+                                "nexts":          [["save as 0.0"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "parens",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["save as 0.0"],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "saveInitFloat0",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+
+                              {
+                                "name":           ["String"],
+                                "nexts":          [["()", "4"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "isString",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["()", "4"],
+                                "nexts":          [["save as \"\""]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "parens",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["save as \"\""],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "saveInitString",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           [":", "3"],
+                                "nexts":          [["Bool", "save value type"],
+                                                   ["Int", "save value type"],
+                                                   ["Float", "save value type"],
+                                                   ["String", "save value type"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "colon3",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["Bool", "save value type"],
+                                "nexts":          [["]", "5"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "boolSaveValueType",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+                              {
+                                "name":           ["Int", "save value type"],
+                                "nexts":          [["]", "5"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "intSaveValueType",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+                              {
+                                "name":           ["Float", "save value type"],
+                                "nexts":          [["]", "5"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "floatSaveValueType",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+                              {
+                                "name":           ["String", "save value type"],
+                                "nexts":          [["]", "5"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "stringSaveValueType",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["]", "5"],
+                                "nexts":          [["()", "9"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "rightSquareBraket",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+
+
+                              {
+                                "name":           ["()", "9"],
+                                "nexts":          [["save dict as the type specified in make structures children"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "parens",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+
+
+                              {
+                                "name":           ["save dict as the type specified in make structures children"],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "saveInitDict",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                              {
+                                "name":           ["["],
+                                "nexts":          [],
+                                "start_children": [["Bool", "2"], ["Int", "2"], ["Float", "2"], ["String", "2"], ["no init state char"]],
+                                "children":       [],
+                                "function_name":  "leftSquareBraket",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                                  {
+                                    "name":           ["Bool", "2"],
+                                    "nexts":          [["]", "1"], [":", "3"]],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "isBool",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+
+                                  {
+                                    "name":           ["]", "1"],
+                                    "nexts":          [["()", "5"]],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "rightSquareBraket",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+                                  {
+                                    "name":           ["()", "5"],
+                                    "nexts":          [["save as [false]"]],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "parens",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+
+                                  {
+                                    "name":           ["save as [false]"],
+                                    "nexts":          [],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "saveInitArrayFalse",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+
+
+
+
+                                  {
+                                    "name":           ["Int", "2"],
+                                    "nexts":          [["]", "2"], [":", "3"]],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "isInt",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+
+                                  {
+                                    "name":           ["]", "2"],
+                                    "nexts":          [["()", "6"]],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "rightSquareBraket",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+                                  {
+                                    "name":           ["()", "6"],
+                                    "nexts":          [["save as [0]"]],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "parens",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+
+                                  {
+                                    "name":           ["save as [0]"],
+                                    "nexts":          [],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "saveInitArray0",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+
+
+                                  {
+                                    "name":           ["Float", "2"],
+                                    "nexts":          [["]", "3"], [":", "3"]],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "isFloat",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+
+                                  {
+                                    "name":           ["]", "3"],
+                                    "nexts":          [["()", "7"]],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "rightSquareBraket",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+                                  {
+                                    "name":           ["()", "7"],
+                                    "nexts":          [["save as [0.0]"]],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "parens",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+
+                                  {
+                                    "name":           ["save as [0.0]"],
+                                    "nexts":          [],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "saveInitArrayFloat0",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+
+
+
+                                  {
+                                    "name":           ["String", "2"],
+                                    "nexts":          [["]", "4"], [":", "3"]],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "isString",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+
+                                  {
+                                    "name":           ["]", "4"],
+                                    "nexts":          [["()", "8"]],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "rightSquareBraket",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+                                  {
+                                    "name":           ["()", "8"],
+                                    "nexts":          [["save as [\"\"]"]],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "parens",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+
+                                  {
+                                    "name":           ["save as [\"\"]"],
+                                    "nexts":          [],
+                                    "start_children": [],
+                                    "children":       [],
+                                    "function_name":  "saveInitArrayString",
+                                    "data":           {"nothing": "null"},
+                                    "parents":        [["["]]
+                                  },
+
+                              {
+                                "name":           ["no init state char"],
+                                "nexts":          [["element", "1"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "noInitStateChar",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+
+                              {
+                                "name":           ["element", "1"],
+                                "nexts":          [["dict"], ["list"]],
+                                "start_children": [["element", "0"]],
+                                "children":       [],
+                                "function_name":  "returnTrue",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+
+                                    {
+                                      "name":           ["element", "0"],
+                                      "nexts":          [],
+                                      "start_children": [["pair"], ["value"]],
+                                      "children":       [],
+                                      "function_name":  "returnTrue",
+                                      "data":           {"nothing": "null"},
+                                      "parents":        [["element", "1"]]
+                                    },
+
+                                      {
+                                        "name":           ["pair"],
+                                        "nexts":          [],
+                                        "start_children": [["key"]],
+                                        "children":       [["is_dict"], ["key type"], ["value type"]],
+                                        "function_name":  "returnTrue",
+                                        "data":           {"nothing": "null"},
+                                        "parents":        [["element", "0"]]
+                                      },
+
+
+                                          {
+                                            "name":           ["is_dict"],
+                                            "nexts":          [],
+                                            "start_children": [],
+                                            "children":       [],
+                                            "function_name":  "returnTrue",
+                                            "data":           {"nothing": "null"},
+                                            "parents":        [["pair"]]
+                                          },
+
+                                          {
+                                            "name":           ["key type"],
+                                            "nexts":          [],
+                                            "start_children": [],
+                                            "children":       [],
+                                            "function_name":  "returnTrue",
+                                            "data":           {"nothing": "null"},
+                                            "parents":        [["pair"]]
+                                          },
+
+                                          {
+                                            "name":           ["value type"],
+                                            "nexts":          [],
+                                            "start_children": [],
+                                            "children":       [],
+                                            "function_name":  "returnTrue",
+                                            "data":           {"nothing": "null"},
+                                            "parents":        [["pair"]]
+                                          },
+
+                                          {
+                                            "name":           ["key"],
+                                            "nexts":          [[":"]],
+                                            "start_children": [ ["-"], ["#"],
+                                                                ["\""],
+                                                                ["true"],
+                                                                ["false"]],
+                                            "children":       [["value", "key"]],
+                                            "function_name":  "returnTrue",
+                                            "data":           {"nothing": "null"},
+                                            "parents":        [["pair"]]
+                                          },
+
+                                              {
+                                                "name":           ["value", "key"],
+                                                "nexts":          [],
+                                                "start_children": [],
+                                                "children":       [],
+                                                "function_name":  "returnTrue",
+                                                "data":           {"nothing": "null"},
+                                                "parents":        [["key"]]
+                                              },
+
+                                          {
+                                            "name":           [":"],
+                                            "nexts":          [],
+                                            "start_children": [],
+                                            "children":       [],
+                                            "function_name":  "returnTrue",
+                                            "data":           {"nothing": "null"},
+                                            "parents":        [["pair"]]
+                                          },
+
+                                          {
+                                            "name":           ["value", "1"],
+                                            "nexts":          [[":"]],
+                                            "start_children": [ ["-"], ["#"],
+                                                                ["\""],
+                                                                ["true"],
+                                                                ["false"],
+                                                                ["nil"]],
+                                            "children":       [["value", "value"]],
+                                            "function_name":  "returnTrue",
+                                            "data":           {"nothing": "null"},
+                                            "parents":        [["pair"]]
+                                          },
+
+                                          {
+                                            "name":           ["value", "value"],
+                                            "nexts":          [],
+                                            "start_children": [],
+                                            "children":       [],
+                                            "function_name":  "returnTrue",
+                                            "data":           {"nothing": "null"},
+                                            "parents":        [["value", "1"]]
+                                          },
+
+                                      {
+                                        "name":           ["value"],
+                                        "nexts":          [],
+                                        "start_children": [ ["-"], ["#"],
+                                                            ["\""],
+                                                            ["true"],
+                                                            ["false"],
+                                                            ["nil"]],
+                                        "children":       [["value", "element"], ["is_list"], ["value type", "1"]],
+                                        "function_name":  "returnTrue",
+                                        "data":           {"nothing": "null"},
+                                        "parents":        [["element", "0"]]
+                                      },
+
+                                        {
+                                          "name":           ["value", "element"],
+                                          "nexts":          [],
+                                          "start_children": [],
+                                          "children":       [],
+                                          "function_name":  "returnTrue",
+                                          "data":           {"nothing": "null"},
+                                          "parents":        [["value"]]
+                                        },
+
+                                        {
+                                          "name":           ["is_list"],
+                                          "nexts":          [],
+                                          "start_children": [],
+                                          "children":       [],
+                                          "function_name":  "returnTrue",
+                                          "data":           {"nothing": "null"},
+                                          "parents":        [["value"]]
+                                        },
+
+                                        {
+                                          "name":           ["value type", "1"],
+                                          "nexts":          [],
+                                          "start_children": [],
+                                          "children":       [],
+                                          "function_name":  "returnTrue",
+                                          "data":           {"nothing": "null"},
+                                          "parents":        [["value"]]
+                                        },
+
+                              {
+                                "name":           ["dict"],
+                                "nexts":          [[","]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "returnTrue",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["list"],
+                                "nexts":          [[","]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "returnTrue",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+
+                              {
+                                "name":           [","],
+                                "nexts":          [["element", "2"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "comma",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+                              {
+                                "name":           ["element", "2"],
+                                "nexts":          [[","]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "returnTrue",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+
+
+                              {
+                                "name":           ["]"],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "rightSquareBraket",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["make structure"]]
+                              },
+                              
+
+
+
+
+
+          {
+            "name":           ["end of input"],
+            "nexts":          [],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "endOfInput",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          }, 
+
+          {
+            "name":           ["is_children"],
+            "nexts":          [["save new state", "from before children"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "isChildren",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },    
+          {
+            "name":           ["is_next"],
+            "nexts":          [["save new state", "from before next"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "isNext",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+          {
+            "name":           ["save new state", "from before children"],
+            "nexts":          [["advance", "past children"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "saveNewState",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+          {
+            "name":           ["save new state", "from before next"],
+            "nexts":          [["advance", "to next state link"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "saveNewState",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+          {
+            "name":           ["advance level"],
+            "nexts":          [["name", "0"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "advanceLevel",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+          {
+            "name":           ["advance", "past children"],
+            "nexts":          [["delete current state name", "2"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "advanceLoop",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+
+
+
+
+          {
+            "name":           ["delete current state name", "2"],
+            "nexts":          [["advance level"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "deleteCurrentStateName",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+
+
+          {
+            "name":           ["advance", "to next state link"],
+            "nexts":          [["save", "next state link"]],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "advanceLoop",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+          {
+            "name":           ["save", "next state link"],
+            "nexts":          [["advance", "to maybe next state link"]],
+            "start_children": [["get the next link"]],
+            "children":       [],
+            "function_name":  "saveNextStateLink",
+            "data":           {"nothing": "null"},
+            "parents":        []
+          },
+          { 
+            "name":           ["get the next link"],
+            "nexts":          [["add child link to state"], ["add start child link to state"], ["add link to state"]],
+            "start_children": [["-", "2"], ["&"], ["name_i"]],
+            "children":       [["names", "next state links"], ["i"], ["is_start_child"]],
+            "function_name":  "initJ",
+            "data":           {"nothing": "null"},
+            "parents":        [["is link", "2"], ["is link"], ["save", "next state link"]]
+          },
+
+
+            { 
+              "name":           ["is_start_child"],
+              "nexts":          [],
+              "start_children": [],
+              "children":       [],
+              "function_name":  "returnTrue",
+              "data":           {"Bool": "false"},
+              "parents":        [["get the next link"]]
+            },
+            { 
+              "name":           ["-", "2"],
+              "nexts":          [["&"]],
+              "start_children": [],
+              "children":       [],
+              "function_name":  "dash",
+              "data":           {"nothing": "null"},
+              "parents":        [["get the next link"]]
+            },
+
+            { 
+              "name":           ["&"],
+              "nexts":          [["name_i"]],
+              "start_children": [],
+              "children":       [],
+              "function_name":  "ampersand",
+              "data":           {"nothing": "null"},
+              "parents":        [["get the next link"]]
+            },
+          { 
+            "name":           ["add child link to state"],
+            "nexts":          [],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "saveChildLink",
+            "data":           {"nothing": "null"},
+            "parents":        [["is link"]]
+          },
+
+
+          { 
+            "name":           ["add start child link to state"],
+            "nexts":          [],
+            "start_children": [],
+            "children":       [],
+            "function_name":  "saveStartChildLink",
+            "data":           {"nothing": "null"},
+            "parents":        [["is link"]]
+          },
+
+
+  {
+    "name":           ["names", "next state links"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"[String]": ""},
+    "parents":        []
+  },
+  {
+    "name":           ["j"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"Int": "0"},
+    "parents":        []
+  },
+  {
+    "name":           ["name_i"],
+    "nexts":          [["/"], ["input empty", "2"]],
+    "start_children": [["char - \\-' '"]],
+    "children":       [["state name string", "next states"]],
+    "function_name":  "initI",
+    "data":           {"nothing": "null"},
+    "parents":        [["get the next link"]]
+  },
+      {
+        "name":           ["state name string", "next states"],
+        "nexts":          [],
+        "start_children": [],
+        "children":       [],
+        "function_name":  "returnTrue",
+        "data":           {"[String]": ""},
+        "parents":        [["name_i"]]
+      },
+      {
+        "name":           ["char - \\-' '"],
+        "nexts":          [["char - \\-' '"], ["\\"], [" ", "0"], ["input empty", "0"]],
+        "start_children": [],
+        "children":       [],
+        "function_name":  "charNotBackSlashNotWhiteSpace",
+        "data":           {"nothing": "null"},
+        "parents":        [["name_i"]]
+      },
+      {
+        "name":           ["\\"],
+        "nexts":          [["char - \\-' '"]],
+        "start_children": [],
+        "children":       [],
+        "function_name":  "backSlash",
+        "data":           {"nothing": "null"},
+        "parents":        [["name_i"]]
+      },
+      {
+        "name":           [" ", "0"],
+        "nexts":          [["char - \\-' '-/", "1"], ["/", "0"], ["\\"]],
+        "start_children": [],
+        "children":       [],
+        "function_name":  "whiteSpace0",
+        "data":           {"nothing": "null"},
+        "parents":        [["name_i"]]
+      },
+      {
+        "name":           ["char - \\-' '-/", "1"],
+        "nexts":          [["char - \\-' '"]],
+        "start_children": [],
+        "children":       [],
+        "function_name":  "collectLastSpace",
+        "data":           {"nothing": "null"},
+        "parents":        [["name_i"]]
+      },
+      {
+        "name":           ["/", "0"],
+        "nexts":          [],
+        "start_children": [],
+        "children":       [],
+        "function_name":  "forwardSlash0",
+        "data":           {"nothing": "null"},
+        "parents":        [["name_i"]]
+      },
+      {
+        "name":           ["input empty", "0"],
+        "nexts":          [],
+        "start_children": [],
+        "children":       [],
+        "function_name":  "inputHasBeenReadIn0",
+        "data":           {"nothing": "null"},
+        "parents":        [["name_i"]]
+      },
+  {
+    "name":           ["/"],
+    "nexts":          [[" ", "1"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "forwardSlash",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           [" ", "1"],
+    "nexts":          [["name_i"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "whiteSpace1",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["input empty", "2"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "inputHasBeenReadIn2",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+        {
+          "name":           ["add link to state"],
+          "nexts":          [],
+          "start_children": [],
+          "children":       [],
+          "function_name":  "addLinkToState",
+          "data":           {"nothing": "null"},
+          "parents":        []
+        },
+  {
+    "name":           ["advance", "to maybe next state link"],
+    "nexts":          [["is current word a sibling of prev word"], ["advance past", "function"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "advanceLoop",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["is current word a sibling of prev word"],
+    "nexts":          [["save", "next state link"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "isCurrentWordASiblingOfPrevWord",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["advance past", "function"],
+    "nexts":          [["TLO"], ["save function name"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "advanceLoop",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["TLO"],
+    "nexts":          [["save function name", "1"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "tlo",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["save function name", "1"],
+    "nexts":          [],
+    "start_children": [["get the function name"]],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["save function name"],
+    "nexts":          [["advance", "again"]],
+    "start_children": [["get the function name"]],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["get the function name"],
+    "nexts":          [["save the function name"]],
+    "start_children": [["swift function signature"], ["swift_function_name"]],
+    "children":       [],
+    "function_name":  "initK",
+    "data":           {"nothing": "null"},
+    "parents":        [["save function name"]]
+  },
+  {
+    "name":           ["k"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"Int": "0"},
+    "parents":        [["get the function name"]]
+  },
+  {
+    "name":           ["function name"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"String": ""},
+    "parents":        [["get the function name"]]
+  },
+  {
+    "name":           ["swift function signature"],
+    "nexts":          [["runs"]],
+    "start_children": [["letter"]],
+    "children":       [],
+    "function_name":  "isFirstCharS",
+    "data":           {"nothing": "null"},
+    "parents":        [["get the function name"]]
+  },
+  {
+    "name":           ["letter"],
+    "nexts":          [["letter_underscore_number"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "letter",
+    "data":           {"nothing": "null"},
+    "parents":        [["swift function signature"]]
+  },
+  {
+    "name":           ["letter_underscore_number"],
+    "nexts":          [["letter_underscore_number"], ["("]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "letterUnderscoreNumber",
+    "data":           {"nothing": "null"},
+    "parents":        [["swift function signature"]]
+  },
+  {
+    "name":           ["("],
+    "nexts":          [["letter", "1"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "leftParens",
+    "data":           {"nothing": "null"},
+    "parents":        [["swift function signature"]]
+  },
+    
+  {
+    "name":           ["letter", "1"],
+    "nexts":          [["letter_underscore_number", "1"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "letter",
+    "data":           {"nothing": "null"},
+    "parents":        [["swift function signature"]]
+  },
+  {
+    "name":           ["letter_underscore_number", "1"],
+    "nexts":          [["letter_underscore_number", "1"], [":"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "letterUnderscoreNumber",
+    "data":           {"nothing": "null"},
+    "parents":        [["swift function signature"]]
+  },
+  {
+    "name":           [":"],
+    "nexts":          [[")"], ["letter", "1"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "colon",
+    "data":           {"nothing": "null"},
+    "parents":        [["swift function signature"]]
+  },
+  {
+    "name":           [")"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "rightParens",
+    "data":           {"nothing": "null"},
+    "parents":        [["swift function signature"]]
+  },
+  {
+    "name":           ["letter", "2"],
+    "nexts":          [["letter_underscore_number", "2"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "collectLetter",
+    "data":           {"nothing": "null"},
+    "parents":        [["swift function signature"]]
+  },
+  {
+    "name":           ["letter_underscore_number", "2"],
+    "nexts":          [["letter_underscore_number", "2"], ["input empty", "1"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "collectLetterUnderscoreNumber",
+    "data":           {"nothing": "null"},
+    "parents":        [["swift function signature"]]
+  },
+  {
+    "name":           ["input empty", "1"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "inputEmpty",
+    "data":           {"nothing": "null"},
+    "parents":        [["swift function signature"]]
+  },
+  {
+    "name":           ["runs"],
+    "nexts":          [["swift_function_name"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "runs",
+    "data":           {"nothing": "null"},
+    "parents":        [["get the function name"]]
+  },
+  {
+    "name":           ["swift_function_name"],
+    "nexts":          [],
+    "start_children": [["letter", "2"]],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"nothing": "null"},
+    "parents":        [["get the function name"]]
+  },
+  {
+    "name":           ["save the function name"],
+    "nexts":          [],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "saveFunctionName",
+    "data":           {"nothing": "null"},
+    "parents":        [["save function name"]]
+  },
+  {
+    "name":           ["advance", "again"],
+    "nexts":          [["is current word a different parent of prev word"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "advanceLoop",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["is current word a different parent of prev word"],
+    "nexts":          [["is current word \"Next\""], ["is current word a state name"], ["is current word \"function\""]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "isCurrentWordADifferentParentOfPrevWord",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+
+
+
+  {
+    "name":           ["is current word \"Next\""],
+    "nexts":          [["decrease max stack index", "2"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "isNext",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["decrease max stack index", "2"],
+    "nexts":          [["advance", "to next state link"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "decreaseMaxStackIndex",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+
+
+
+
+  {
+    "name":           ["is current word \"function\""],
+    "nexts":          [["decrease max stack index"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "isCurrentWordFunction",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["decrease max stack index"],
+    "nexts":          [["advance past", "function"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "decreaseMaxStackIndex",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["is current word a state name"],
+    "nexts":          [["is current indent == indent for level"], ["is current indent > indent for level"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "isAStateName",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["is current indent == indent for level"],
+    "nexts":          [["delete current state name"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "isCurrentIndentSameAsIndentForLevel",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["delete current state name"],
+    "nexts":          [["increment state_id for the current level"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "deleteCurrentStateName",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["is current indent > indent for level"],
+    "nexts":          [["if prev_indent - current_indent_number > 2"], ["increment state_id for the current level"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "isCurrentIndentGreaterThanAsIndentForLevel",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+
+
+  {
+    "name":           ["if prev_indent - current_indent_number > 2"],
+    "nexts":          [["wind back data state name"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "isTheDataStateOuter",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["wind back data state name"],
+    "nexts":          [["increment state_id for the current level"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "windBackDataStateName",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+
+
+
+
+
+
+
+
+  {
+    "name":           ["increment state_id for the current level"],
+    "nexts":          [["name", "0"]],
+    "start_children": [],
+    "children":       [],
+    "function_name":  "incrementTheStateId",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  },
+  {
+    "name":           ["start_children", "0"],
+    "nexts":          [],
+    "start_children": [["\"Start Children\"", "0"]],
+    "children":       [],
+    "function_name":  "returnTrue",
+    "data":           {"nothing": "null"},
+    "parents":        []
+  }
+]
