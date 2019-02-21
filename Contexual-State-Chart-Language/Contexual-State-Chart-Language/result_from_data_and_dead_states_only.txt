@@ -1,0 +1,53 @@
+(with parsed graph printing turned off, so it runs properly)
+entered visit function
+345678
+-876543
+1234567
+3.45678
+-0.876543
+true
+false
+nil
+"This is a literal\""
+""
+Int()
+Float()
+Bool()
+String()
+[Int]()
+[Float]()
+[Bool]()
+[String]()
+"This is a literal\""
+""
+String()
+[String]()
+0.0
+-0.9876543
+Float()
+[Float]()
+false
+true
+Bool()
+[Bool]()
+nil
+[String: Int]()
+[String: Float]()
+[Int: Bool]()
+[Float: Bool]()
+[Bool: String]()
+["1" : 1, "2" : 2, "3", 3]
+here
+error at 
+["not \" not \\"] notDoubleQuoteNotBackSlash
+["\"", "2"] doubleQuote
+state machine is done
+
+total states run 1042
+["Dictionaries", "String -> Int"]
+1
+0
+["int"]
+
+
+Program ended with exit code: 1

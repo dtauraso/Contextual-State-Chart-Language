@@ -1,0 +1,53 @@
+(
+	Next
+		letters_and_digits
+	Function
+		leftParens
+
+letters_and_digits
+	Children
+		digit
+			-0
+				Next
+					letters / 0
+				Function
+					isDigit
+			1
+				Next
+					digit / 2
+				Function
+					isDigit
+			2
+			3
+				Next
+					digit / 4
+				Function
+					isDigit
+			4
+				Next
+					letters / 2
+				Function
+					isDigit
+		letters
+			-0
+				Next
+					digit / 1
+				Function
+					isDigit
+			1
+				Next
+					digit / 3
+				Function
+					isDigit
+			2
+
+		No letters and no digits
+	Next
+		)
+	Function
+		returnTrue
+)
+	Children
+		None
+	Function
+		rightParens

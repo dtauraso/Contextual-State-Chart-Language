@@ -1,0 +1,74 @@
+entry_class
+    Start Children
+        start
+            Next
+                view_did_load_regular
+task_fst
+    Start Children
+        view_did_load_regular
+            Next
+                task_window
+    Children
+        last_view_gone
+            Next
+            task_window
+        task_window
+            Next
+                delete_nested_item_in_task_view
+                task
+                check_mark
+                cal
+        delete_nested_item_in_task_view
+            Next
+                last_view_gone
+        task
+            Next
+                view_did_load_regular
+        cal
+            Next
+                view_did_load_regular_2
+        cell
+            Start children
+                check_mark
+                    Next
+                        end
+                end
+            Children
+                timer
+                    Next
+                        timer_has_been_recorded
+                        record_time
+                timer_has_been_recorded
+                    Next
+                        stop_timer
+                stop_timer
+                    Next
+                        end
+                record_time
+                    Next
+                        end
+                info
+                    Next
+                        clicked_back
+calendarFST
+    Start Children
+        view_did_load_regular_2
+            Next
+                tasks
+    Children
+        tasks
+            Next
+                task
+entry_class
+    Start Children
+        transfer_to_entry_class
+            Next
+                view_did_load_for_nested
+    Children
+        view_did_load_for_nested
+            Next
+                view_did_load_nested
+        view_did_load_nested
+            Next
+                task_window
+
