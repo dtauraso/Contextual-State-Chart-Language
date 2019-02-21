@@ -542,7 +542,7 @@ class Visit {
                 */
             }
             // when machine's stack is folded and done this echos the last state run from before the folding
-            let point2: ContextState = self.name_state_table[self.current_state_name]!
+            //let point2: ContextState = self.name_state_table[self.current_state_name]!
 
             //print("winning state", self.current_state_name, "f=", point2.function_name)
             //print("next states", self.next_states)
@@ -556,12 +556,12 @@ class Visit {
             self.ii += 1
         }
         print("state machine is done\n")
-        print(self.ii)
+        print("total states run", self.ii)
     
-        let matrix = name_state_table[["sparse_matrix"]]!.getData().data["[Point: ContextState]"] as! [Point: ContextState]
-        let point_table = name_state_table[["point_table"]]!.getData().data["[[String]: Point]"] as! [[String]: Point]
+        //let matrix = name_state_table[["sparse_matrix"]]!.getData().data["[Point: ContextState]"] as! [Point: ContextState]
+        //let point_table = name_state_table[["point_table"]]!.getData().data["[[String]: Point]"] as! [[String]: Point]
         //print(matrix.count)
-        let start_node = matrix[Point.init(l: 0, s: 0)]!
+        //let start_node = matrix[Point.init(l: 0, s: 0)]!
         /*
         let points = matrix.keys
         var index = points.startIndex

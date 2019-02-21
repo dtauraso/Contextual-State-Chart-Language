@@ -134,7 +134,7 @@ func deleteSecondToNNewLines(input: String) -> String
 }
 func makeDataObject(value: [String: String]) -> Data
 {
-    var data_item : Data = Data.init(new_data: [:])
+    let data_item : Data = Data.init(new_data: [:])
     //print(value)
 
     if(value["nothing"] != nil)
@@ -201,76 +201,19 @@ func readFile(path: String) -> String
     return String(contents)
 
 }
-/*
-func start()
-{
-    print("Hello, World!")
-    NSLog("%@", NSHomeDirectory());
-    print([NSHomeDirectory()])
-    print()
-    // Create a FileManager instance
 
-    let fileManager = FileManager.default
-    //let fileManager2 =
-    //fileManager("/data_and_dead_state_parsing_only_input.txt")// FileManager.defaultManager()
 
-    // Get current directory path
-
-    let path1 = fileManager.currentDirectoryPath + "data_and_dead_state_parsing_only_input.txt"
-    //print(path1)
-    //print(readFile(path: "data_and_dead_state_parsing_only_input.txt"))
-    //exit(0)
-
-}*/
-
-// Override point for customization after application launch.
-func run2() -> Bool
+func run2()
 {
     //
-    // make non-ui classes here
-    //x = ["test"]
-    //print("blablabla")
 
-
-
-
-    /*
-    ContextState.init(name: T##[String],
-                                                   start_children: <#T##[[String]]#>,
-                                                   parents: <#T##[[String]]#>,\
-                                                   children: <#T##[[String]]#>,
-                                                   nexts: <#T##[[String]]#>,
-                                                   function: <#T##([Point : ContextState], [String]) -> Bool#>,
-                                                   function_name: <#T##String#>,
-                                                   data: <#T##[String : Any]#>)
-
-    */
-    //let parser: Parser = Parser.init()
-    /*parser.testing(levels: parser.levels,
-               state_point_table: parser.state_point_table,
-               current_state_name: ["input"])
-    */
     var name_state_table = [[String]: ContextState]()
-    var data: String = readFile(path: "parsing_tree.json")
-    /*
-    let json_parser = JSONParser.init()
-    var stream: [Character] = [Character]()
-    for item in data
-    {
-    stream.append(item)
-    }*/
-    /*
-    let result = json_parser.jsonObject(json_string: &stream)
-    //print(result)
-
-    for i in result
-    {
-    print(i.key)
-    }*/
+    let data: String = readFile(path: "parsing_tree.json")
+    
     var my_struct: [x] = [x]()
     do
     {
-    my_struct = try JSONDecoder().decode([x].self, from: data.data(using: .utf8)!) // decoding our data
+        my_struct = try JSONDecoder().decode([x].self, from: data.data(using: .utf8)!)
     }
     catch
     {
@@ -297,7 +240,7 @@ func run2() -> Bool
     name_state_table[item.name]?.function_name = item.function_name
     name_state_table[item.name]?.data = makeDataObject(value: item.data)
     name_state_table[item.name]?.parents = item.parents
-    name_state_table[item.name]?.Print(indent_level: 0)
+    //name_state_table[item.name]?.Print(indent_level: 0)
     //print()
     }
     // "data_and_dead_state_parsing_only_input.txt"
@@ -370,7 +313,6 @@ func run2() -> Bool
         // if all items have the sync status
             // return to state that was send to sync
     */
-    return true
 
 }
 
