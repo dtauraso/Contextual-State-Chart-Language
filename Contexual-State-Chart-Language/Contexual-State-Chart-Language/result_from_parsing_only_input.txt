@@ -194,4 +194,4 @@ entry class
   Parents
     root
 
-Program ended with exit code: 1
+Program ended with exit code: 0
