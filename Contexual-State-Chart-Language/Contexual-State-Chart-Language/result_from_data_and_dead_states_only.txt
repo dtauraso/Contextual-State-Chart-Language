@@ -49,4 +49,4 @@ total states run 1042
 ["int"]
 
 
-Program ended with exit code: 1
+Program ended with exit code: 0
