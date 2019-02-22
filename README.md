@@ -169,11 +169,19 @@ https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual
 ## Parsing only examples
 https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual-State-Chart-Language/Contexual-State-Chart-Language/parsing_only_input.txt
 
+Log from above input.  The tree is only printed out in the end because all states were sucessfully parsed.
+https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual-State-Chart-Language/Contexual-State-Chart-Language/result_from_parsing_only_input.txt
+
+
 https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual-State-Chart-Language/Contexual-State-Chart-Language/data_and_dead_state_parsing_only_input.txt
 
+Log from above input.  The tree is not printed out because the not all state have been sucessfully parsed.  The error shows how far it went
+https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual-State-Chart-Language/Contexual-State-Chart-Language/result_from_data_and_dead_states_only.txt
 
 
 It correctly parses all examples except for the swift lists and swift dicts (not the initializers).
+
+Here are 
 ## Let’s say you are finished with CSCL(Contextual State Chart Language).  How would you use it?
 
 	put the CSCL code in a file ending in “.txt”
