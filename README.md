@@ -202,6 +202,7 @@ Here are
 		Still in developement.
 
 future research
+
 recording states used to show a full usage history for design, debugging, etc.
 
 learn how others use it to improve design
