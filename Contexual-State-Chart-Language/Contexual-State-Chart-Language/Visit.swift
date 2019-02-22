@@ -596,6 +596,5 @@ class Visit {
                 }
 
         }
-        exit(1)
     }
 }
