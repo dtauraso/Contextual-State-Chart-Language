@@ -1,6 +1,7 @@
 # Contexual-State-Chart-Language
 This is an extracurricular research project.  I’m researching the question “Is there a way to code programs in a way that is cognitively more straightforward to humans than what we currently have?”
 
+Note: This is a supplemental language.  It is not meant to replace programming languages.  You will still use your primary langauge: Python, JS, Java, etc.
 ## Inspiration
 
   DFA’s from taking CS 460 with Professor Watts
