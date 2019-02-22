@@ -201,23 +201,25 @@ Here are
  
 		Still in developement.
 
-future research
+## Future Research
 
-recording states used to show a full usage history for design, debugging, etc.
+Working with others to encourage community contributions to this project
 
-learn how others use it to improve design
+Recording states used to show a full usage history for design, debugging, etc
 
-look at other programming techniques to find ways to improve it
+Learn how others use it to improve design
 
-storing code in Function using brackets
+Look at other programming techniques to find ways to improve it
 
-backtracking
+Storing code in Function using brackets
 
-parallel states
+Backtracking
 
-folding for levels you don’t want to see
+Parallel states
 
-maybe even an api for locks, so this can simulate an operating system directly
+Folding for levels you don’t want to see
+
+Maybe even an api for locks, so this can simulate an operating system directly
 
 
 
