@@ -1,5 +1,3 @@
-(with parsed graph printing turned on)
-
 entered visit function
 state machine is done
 
