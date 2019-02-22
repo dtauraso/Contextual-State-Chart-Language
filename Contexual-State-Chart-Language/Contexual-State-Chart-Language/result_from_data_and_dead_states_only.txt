@@ -1,4 +1,3 @@
-(with parsed graph printing turned off, so it runs properly)
 entered visit function
 345678
 -876543
