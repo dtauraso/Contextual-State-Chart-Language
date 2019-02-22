@@ -183,7 +183,10 @@ It correctly parses all examples except for the swift lists and swift dicts (not
 
   For ios apps:
   
-		each class would have a table of member function names mapping to their references.  you would then call the visitor function from your class and send the table along.  This is the current idea, but may require another function between the class function and visitor.
+  	Current idea:
+		Each class would have a table of member function names mapping to their references.
+		You would then call the visitor function from your class and send the table along.
+		May require another function between the class function and visitor.
 	
  For terminal programs:
  
