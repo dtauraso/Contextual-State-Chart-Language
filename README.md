@@ -182,7 +182,7 @@ https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual
 
 It correctly parses all examples except for the swift lists and swift dicts (not the initializers).
 
-Update: It recognizes swift dicts using values of types string, int, and float
+Update: It recognizes swift dicts using values of types string, int, and float.
 
 ## Let’s say you are finished with CSCL(Contextual State Chart Language).  How would you use it?
 
