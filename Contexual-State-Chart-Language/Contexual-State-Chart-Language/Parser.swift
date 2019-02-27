@@ -830,14 +830,22 @@ func initI(current_state_name: [String], parser: inout Parser, stack: ChildParen
 
 func skipSpaces(input: String, i: Int) -> Int
 {
-    var k = input.index(input.startIndex, offsetBy: String.IndexDistance(i))
-
-
-    while(!outOfBounds(i: k.encodedOffset, size: input.count) && input[k] == " ")
+    if(i < input.count)
     {
-        k = input.index(input.startIndex, offsetBy: String.IndexDistance(k.encodedOffset + 1))
+        var k = input.index(input.startIndex, offsetBy: String.IndexDistance(i))
+
+
+        while(!outOfBounds(i: k.encodedOffset, size: input.count) && input[k] == " ")
+        {
+            k = input.index(input.startIndex, offsetBy: String.IndexDistance(k.encodedOffset + 1))
+        }
+        return k.encodedOffset
     }
-    return k.encodedOffset
+    else
+    {
+        return i
+    }
+   
 }
 func collectSpaces(input: String, i: Int) -> String
 {
@@ -1433,6 +1441,7 @@ func doubleQuote(current_state_name: [String], parser: inout Parser, stack: Chil
     //print("double quote")
     let x = parser.getVariable(state_name: ["x"]).getInt()
     let input = parser.getVariable(state_name: ["current_word"]).getString()
+    
     let i = input.index(input.startIndex, offsetBy: String.IndexDistance(x))
     let char = input[i]
     //print(char)
@@ -1464,20 +1473,34 @@ func notDoubleQuoteNotBackSlash(current_state_name: [String], parser: inout Pars
     let input = parser.getVariable(state_name: ["current_word"]).getString()
     let i = input.index(input.startIndex, offsetBy: String.IndexDistance(x))
     let char = input[i]
-    //print(char, !(char == "\"" || char == "\\"))
+    print(char, !(char == "\"" || char == "\\"))
     if(!(char == "\"" || char == "\\"))
     {
         //print(stack.getChild(),stack.getParent()?.getChild(), stack.getParent()?.getChild() == ["make structure"])
+        print(stack.getParent()?.getParent()?.getChild())
         if(stack.getParent()?.getChild() == ["make structure"])
         {
             collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
             return true
 
         }
-        if(stack.getParent()?.getChild() == ["key"])
+        if(stack.getParent()?.getParent()?.getChild() == ["element", "1"])
         {
             print("here")
-            return false
+            collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
+            print(parser.getVariable(state_name: ["x"]).getInt())
+            print(input)
+            return true
+            //exit(0)
+        }
+        // missing the case for element / 3
+        if(stack.getParent()?.getParent()?.getChild() == ["element", "3"])
+        {
+            print("here")
+            collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
+            print(parser.getVariable(state_name: ["x"]).getInt())
+            print(input)
+            return true
             //exit(0)
         }
 
@@ -1547,11 +1570,15 @@ func dot(current_state_name: [String], parser: inout Parser, stack: ChildParent)
 }
 func digit(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
 {
-    let x = parser.getVariable(state_name: ["x"]).getInt()
+    var x = parser.getVariable(state_name: ["x"]).getInt()
     let input = parser.getVariable(state_name: ["current_word"]).getString()
+        print(x, input)
+
+    x = skipSpaces(input: input, i: x)
+
     let i = input.index(input.startIndex, offsetBy: String.IndexDistance(x))
     let char = input[i]
-
+    print(x, input)
     if(char >= "0" && char <= "9")
     {
         return check(parser: &parser, x: x, char: char, stack: stack)
@@ -1580,6 +1607,17 @@ func isTrue(current_state_name: [String], parser: inout Parser, stack: ChildPare
 
                 return true
             }
+            /*
+            else if(stack.getParent()?.getParent()?.getChild() == ["element", "3"])
+            {
+                print("here")
+                collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
+                print(parser.getVariable(state_name: ["x"]).getInt())
+                print(input)
+                return true
+                //exit(0)
+            }
+            */
         }
     }
     return false
@@ -1855,7 +1893,94 @@ func isKOutOfBounds(current_state_name: [String], parser: inout Parser, stack: C
     }
     return false
 }
+// not associated with a state
+func saveDataEntry(current_state_name: [String], parser: inout Parser, stack: ChildParent, type_name: String)
+{
+    // we don't know if the data structure is a dict or list
+    let upper_child = stack.getParent()?.getParent()?.getChild()
+    if(upper_child == ["element", "1"])
+    {
+        let string_saved = parser.getVariable(state_name: ["structure"]).getString()
+        
+        parser.getVariable(state_name: ["key", "entry", "2"]).setString(value: string_saved)
+        parser.getVariable(state_name: ["key", "type", "2"]).setString(value: type_name)
 
+        parser.getVariable(state_name: ["key", "entry", "1"]).setString(value: string_saved)
+        parser.getVariable(state_name: ["key", "type", "1"]).setString(value: type_name)
+
+    }
+    // we know the data structure is a dict and what type it is
+    else if(upper_child == ["element", "2"])
+    {
+    
+        let key_saved = parser.getVariable(state_name: ["key", "entry", "2"]).getString()
+        let key_type_saved = parser.getVariable(state_name: ["key", "type", "2"]).getString()
+        parser.getVariable(state_name: ["value", "4"]).setString(value: key_saved)
+        parser.getVariable(state_name: ["type", "3"]).setString(value: key_type_saved)
+        
+
+
+        let value_saved = parser.getVariable(state_name: ["structure"]).getString()
+
+        parser.getVariable(state_name: ["value", "5"]).setString(value: value_saved)
+        parser.getVariable(state_name: ["type", "4"]).setString(value: type_name)
+    }
+    // we know the data structure is a dict and have already set the type
+    else if(upper_child == ["element", "3"])
+    {
+        let key_saved = parser.getVariable(state_name: ["structure"]).getString()
+        parser.getVariable(state_name: ["value", "5"]).setString(value: key_saved)
+        parser.getVariable(state_name: ["type", "4"]).setString(value: type_name)
+    }
+    // we know the data structure is a list and what type it is and the first element has already been added
+    else if(upper_child == ["element", "4"])
+    {
+        let value_saved = parser.getVariable(state_name: ["structure"]).getString()
+        parser.getVariable(state_name: ["value", "6"]).setString(value: value_saved)
+        parser.getVariable(state_name: ["type", "6"]).setString(value: type_name)
+
+        
+    }
+    // we know the data structure is a list and what type it is and the second element has already been added
+    else if(upper_child == ["element", "5"])
+    {
+        let value_saved = parser.getVariable(state_name: ["structure"]).getString()
+        parser.getVariable(state_name: ["value", "6"]).setString(value: value_saved)
+        parser.getVariable(state_name: ["type", "6"]).setString(value: type_name)
+
+        
+    }
+    
+}
+// for when the value being collected is part of a dict or list
+func endOfValueButNotOutOfBounds(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
+{
+    let x = parser.getVariable(state_name: ["x"]).getInt()
+    let input = parser.getVariable(state_name: ["current_word"]).getString()
+
+    if(x < input.count)
+    {
+    
+        // int
+        if(current_state_name == ["end of value but not out of bounds", "int"])
+        {
+            saveDataEntry(current_state_name: current_state_name, parser: &parser, stack: stack, type_name: "Int")
+            return true
+
+        }
+        
+        // string
+        if(current_state_name == ["end of value but not out of bounds", "string"])
+        {
+           saveDataEntry(current_state_name: current_state_name, parser: &parser, stack: stack, type_name: "String")
+           return true
+
+           
+        }
+        
+    }
+    return false
+}
 func saveInitFalse(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
 {
     let state = getLastStateSaved(parser: &parser)
@@ -1927,12 +2052,14 @@ func colon3(current_state_name: [String], parser: inout Parser, stack: ChildPare
     let current_word = parser.getVariable(state_name: ["current_word"]).getString()
     var k = parser.getVariable(state_name: ["x"]).getInt()
     k = skipSpaces(input: current_word, i: k)
+    //print("here ggggg")
     if(!outOfBounds(i: k, size: current_word.count))
     {
         let char = current_word[current_word.index(current_word.startIndex, offsetBy: String.IndexDistance(k))]
         //print(char)
         if(char == ":")
         {
+
             parser.getVariable(state_name: ["x"]).setInt(value: k + 1)
             return true
 
@@ -1942,6 +2069,32 @@ func colon3(current_state_name: [String], parser: inout Parser, stack: ChildPare
     }
     return false
 }
+func comma(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
+{
+    
+    let current_word = parser.getVariable(state_name: ["current_word"]).getString()
+    var k = parser.getVariable(state_name: ["x"]).getInt()
+    k = skipSpaces(input: current_word, i: k)
+    //print("here ggggg")
+    if(!outOfBounds(i: k, size: current_word.count))
+    {
+        let char = current_word[current_word.index(current_word.startIndex, offsetBy: String.IndexDistance(k))]
+        //print(char)
+        if(char == ",")
+        {
+            // because the other parsing functions are intertwined with other parts and so the lines below must be set up this way
+            k = skipSpaces(input: current_word, i: k + 1)
+
+            parser.getVariable(state_name: ["x"]).setInt(value: k)
+            return true
+
+        }
+        
+        
+    }
+    return false
+}
+
 func boolSaveValueType(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
 {
     var x = parser.getVariable(state_name: ["x"]).getInt()
@@ -2200,6 +2353,7 @@ func check(parser: inout Parser, x: Int, char: Character, stack: ChildParent) ->
 {
     // first time, "make structure" is on the stack, second time to nth time, It is not
     //print(stack.getParent()?.child)
+    
     if(stack.child == ["make structure"])
     {
         //print(stack.child)
@@ -2217,20 +2371,13 @@ func check(parser: inout Parser, x: Int, char: Character, stack: ChildParent) ->
     }
     else if(stack.child == ["key"])
     {
-        collect(parser: &parser, x: x, container_name: ["value", "key"], char: char)
+        collect(parser: &parser, x: x, container_name: ["structure"], char: char)
         return true
-
-    }
-    else if(stack.child == ["value", "1"])
-    {
-        collect(parser: &parser, x: x, container_name: ["value", "value"], char: char)
-        return true
-
 
     }
     else if(stack.child == ["value"])
     {
-        collect(parser: &parser, x: x, container_name: ["value", "element"], char: char)
+        collect(parser: &parser, x: x, container_name: ["structure"], char: char)
         return true
 
 

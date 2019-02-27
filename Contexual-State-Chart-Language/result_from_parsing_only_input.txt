@@ -1,0 +1,199 @@
+(with parsed graph printing turned on)
+
+entered visit function
+state machine is done
+
+total states run 1321
+entry class
+  Children
+      -start
+        Next
+          view did load regular
+        Function
+          start
+        Parents
+          entry class
+      view did load regular
+        Next
+          task window / 999
+        Function
+          viewDidLoadRegular
+        Parents
+          task fst
+          entry class
+      task fst
+        Children
+            -view did load regular
+              Next
+                task window / 999
+              Function
+                viewDidLoadRegular
+              Parents
+                task fst
+                entry class
+            -last view gone
+              Next
+                task window
+              Function
+                lastViewGone
+              Parents
+                task fst
+            task window
+              Next
+                delete nested item in task view / testing
+                task / a task / another context
+                check mark / what is this?
+                cal
+              Function
+                taskWindow
+              Parents
+                task fst
+            delete nested item in task view
+              Next
+                last_view_gone
+              Function
+                deleteNestedItemInTaskView
+              Parents
+                task fst
+            task
+              Next
+                view_did_load_regular
+              Function
+                task
+              Parents
+                task fst
+            cal
+              Next
+                view_did_load_regular / 2
+              Function
+                cal
+              Parents
+                task fst
+            cell
+              Children
+                  -check_mark
+                    Next
+                      end
+                    Function
+                      checkMark
+                    Parents
+                      cell
+                  end
+
+                    Function
+                      returnTrue
+                    Parents
+                      cell
+                  timer
+                    Next
+                      timer_has_been_recorded
+                      record_time
+                    Function
+                      timer
+                    Parents
+                      cell
+                  timer_has_been_recorded
+                    Next
+                      stop_timer
+                    Function
+                      timerHasBeenRecorded
+                    Parents
+                      cell
+                  stop_timer
+                    Next
+                      end
+                    Function
+                      stopTimer
+                    Parents
+                      cell
+                  record_time
+                    Next
+                      end
+                    Function
+                      recordTime
+                    Parents
+                      cell
+                  info
+                    Next
+                      clicked_back
+                    Function
+                      info
+                    Parents
+                      cell
+
+              Function
+                cell
+              Parents
+                task fst
+
+        Function
+          taskFst
+        Parents
+          entry class
+      calendarFST
+        Children
+            view_did_load_regular
+             -2
+              Next
+                tasks
+              Function
+                viewDidLoadRegular2
+              Parents
+                calendarFST
+            view_did_load_regular
+             1
+              Next
+                gfds
+              Function
+                rgfertrg8
+              Parents
+                calendarFST
+            view_did_load_regular
+             3
+             4
+              Next
+                5ytgfrg
+              Function
+                rg5ergfd0
+              Parents
+                calendarFST
+            tasks
+              Next
+                task
+              Function
+                tasks
+              Parents
+                calendarFST
+
+        Function
+          calendarFst
+        Parents
+          entry class
+      transfer_to_entry_class
+        Next
+          view_did_load_for_nested
+        Function
+          transferToEntryClass
+        Parents
+          entry class
+      view_did_load_for_nested
+        Next
+          view_did_load_nested
+        Function
+          viewDidLoadforNested
+        Parents
+          entry class
+      view_did_load_nested
+        Next
+          task_window
+        Function
+          viewDidLoadNested
+        Parents
+          entry class
+
+  Function
+    entryClass
+  Parents
+    root
+
+Program ended with exit code: 1

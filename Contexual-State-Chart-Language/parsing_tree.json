@@ -615,16 +615,16 @@
                                 "parents":        [["make structure"]]
                               }, 
                               
-
                               {
                                 "name":           ["end of value but not out of bounds", "int"],
                                 "nexts":          [],
                                 "start_children": [],
                                 "children":       [],
-                                "function_name":  "returnTrue",
+                                "function_name":  "endOfValueButNotOutOfBounds",
                                 "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
+                                "parents":        [["make structure"], ["key"], ["value"]]
                               },
+
 
                               {
                                 "name":           ["."],
@@ -655,19 +655,18 @@
                                 "data":           {"nothing": "null"},
                                 "parents":        [["make structure"]]
                               }, 
-
+                              
 
                               {
                                 "name":           ["end of value but not out of bounds", "float"],
                                 "nexts":          [],
                                 "start_children": [],
                                 "children":       [],
-                                "function_name":  "returnTrue",
+                                "function_name":  "endOfValueButNotOutOfBounds",
                                 "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
+                                "parents":        [["make structure"], ["key"], ["value"]]
                               },
 
-                              
                               {
                                 "name":           ["float"],
                                 "nexts":          [],
@@ -691,7 +690,7 @@
 
                               {
                                 "name":           ["not \" not \\"],
-                                "nexts":          [["not \" not \\"], ["\\", "2"]],
+                                "nexts":          [["not \" not \\"], ["\\", "2"], ["\"", "2"]],
                                 "start_children": [],
                                 "children":       [],
                                 "function_name":  "notDoubleQuoteNotBackSlash",
@@ -728,6 +727,7 @@
                                 "data":           {"nothing": "null"},
                                 "parents":        [["make structure"]]
                               },
+
                               {
                                 "name":           ["end of value but not out of bounds", "string"],
                                 "nexts":          [],
@@ -735,7 +735,7 @@
                                 "children":       [],
                                 "function_name":  "endOfValueButNotOutOfBounds",
                                 "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
+                                "parents":        [["make structure"], ["key"], ["value"]]
                               },
 
                               {
@@ -1183,75 +1183,244 @@
                                 "children":       [],
                                 "function_name":  "noInitStateChar",
                                 "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
+                                "parents":        [["["]]
                               },
+
 
 
                               {
                                 "name":           ["element", "1"],
-                                "nexts":          [["dict"], ["list"]],
-                                "start_children": [["element", "0"]],
+                                "nexts":          [[":", "4"], [","]],
+                                "start_children": [["key"]],
                                 "children":       [],
                                 "function_name":  "returnTrue",
                                 "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
+                                "parents":        [["["]]
                               },
 
 
-                                    {
-                                      "name":           ["element", "0"],
-                                      "nexts":          [],
-                                      "start_children": [["pair"], ["value"]],
-                                      "children":       [],
-                                      "function_name":  "returnTrue",
-                                      "data":           {"nothing": "null"},
-                                      "parents":        [["element", "1"]]
-                                    },
+                                  
+                              {
+                                "name":           [":", "4"],
+                                "nexts":          [["element", "2"]],
+                                "start_children": [],
+                                "children":       [["key", "type", "2"], ["key", "entry", "2"]],
+                                "function_name":  "colon3",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["["]]
+                              }, 
 
-                                      {
-                                        "name":           ["pair"],
-                                        "nexts":          [],
-                                        "start_children": [["key"]],
-                                        "children":       [["is_dict"], ["key type"], ["value type"]],
-                                        "function_name":  "returnTrue",
-                                        "data":           {"nothing": "null"},
-                                        "parents":        [["element", "0"]]
-                                      },
 
+
+                              {
+                                "name":           ["key", "type", "2"],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "returnTrue",
+                                "data":           {"String": ""},
+                                "parents":        [[":"]]
+                              },
+                                          
+
+                              {
+                                "name":           ["key", "entry", "2"],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "returnTrue",
+                                "data":           {"String": ""},
+                                "parents":        [[":"]]
+                              },
+                                      
+                                    
+                 
+
+
+                                 
+                              {
+                                "name":           ["element", "2"],
+                                "nexts":          [["add entry"]],
+                                "start_children": [["value"]],
+                                "children":       [],
+                                "function_name":  "returnTrue",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["["]]
+                              }, 
+
+
+                              {
+                                "name":           ["add entry"],
+                                "nexts":          [[",", "2"], ["]"]],
+                                "start_children": [],
+                                "children":       [["key", "2"], ["value", "3"]],
+                                "function_name":  "returnTrue",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["["]]
+                              }, 
+
+                                          
 
                                           {
-                                            "name":           ["is_dict"],
+                                            "name":           ["key", "2"],
+                                            "nexts":          [],
+                                            "start_children": [],
+                                            "children":       [["value", "4"], ["type", "3"]],
+                                            "function_name":  "returnTrue",
+                                            "data":           {"nothing": "null"},
+                                            "parents":        [["add entry"]]
+                                          }, 
+
+                                          {
+                                            "name":           ["value", "3"],
+                                            "nexts":          [],
+                                            "start_children": [],
+                                            "children":       [["value", "5"], ["type", "4"]],
+                                            "function_name":  "returnTrue",
+                                            "data":           {"nothing": "null"},
+                                            "parents":        [["add entry"]]
+                                          }, 
+
+
+
+                                                      {
+                                                        "name":           ["key", "4"],
+                                                        "nexts":          [],
+                                                        "start_children": [],
+                                                        "children":       [],
+                                                        "function_name":  "returnTrue",
+                                                        "data":           {"String": ""},
+                                                        "parents":        [["key", "2"]]
+                                                      }, 
+
+                                                      {
+                                                        "name":           ["type", "3"],
+                                                        "nexts":          [],
+                                                        "start_children": [],
+                                                        "children":       [],
+                                                        "function_name":  "returnTrue",
+                                                        "data":           {"String": ""},
+                                                        "parents":        [["key", "2"]]
+                                                      }, 
+
+
+                                                      {
+                                                        "name":           ["value", "5"],
+                                                        "nexts":          [],
+                                                        "start_children": [],
+                                                        "children":       [],
+                                                        "function_name":  "returnTrue",
+                                                        "data":           {"String": ""},
+                                                        "parents":        [["value", "3"]]
+                                                      }, 
+
+                                                      {
+                                                        "name":           ["type", "4"],
+                                                        "nexts":          [],
+                                                        "start_children": [],
+                                                        "children":       [],
+                                                        "function_name":  "returnTrue",
+                                                        "data":           {"String": ""},
+                                                        "parents":        [["value", "3"]]
+                                                      }, 
+
+                              {
+                                "name":           [",", "2"],
+                                "nexts":          [["element", "3"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "comma",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["["]]
+                              }, 
+      
+                              
+
+                              {
+                                "name":           ["element", "3"],
+                                "nexts":          [[":", "4"]],
+                                "start_children": [["key"]],
+                                "children":       [],
+                                "function_name":  "returnTrue",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["["]]
+                              }, 
+                 
+
+                              {
+                                "name":           [","],
+                                "nexts":          [["element", "4"]],
+                                "start_children": [],
+                                "children":       [["key", "type", "1"], ["key", "entry", "1"]],
+                                "function_name":  "returnTrue",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["["]]
+                              }, 
+
+                                          {
+                                            "name":           ["key", "type", "1"],
                                             "nexts":          [],
                                             "start_children": [],
                                             "children":       [],
                                             "function_name":  "returnTrue",
-                                            "data":           {"nothing": "null"},
-                                            "parents":        [["pair"]]
-                                          },
+                                            "data":           {"String": ""},
+                                            "parents":        [[","]]
+                                          }, 
 
                                           {
-                                            "name":           ["key type"],
+                                            "name":           ["key", "entry", "1"],
                                             "nexts":          [],
                                             "start_children": [],
                                             "children":       [],
                                             "function_name":  "returnTrue",
-                                            "data":           {"nothing": "null"},
-                                            "parents":        [["pair"]]
-                                          },
+                                            "data":           {"String": ""},
+                                            "parents":        [[","]]
+                                          }, 
+                              {
+                                "name":           ["element", "4"],
+                                "nexts":          [["add entry", "2"],["]"]],
+                                "start_children": [["value"]],
+                                "children":       [],
+                                "function_name":  "returnTrue",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["["]]
+                              }, 
+
+
+                              {
+                                "name":           ["add entry", "2"],
+                                "nexts":          [[","]],
+                                "start_children": [],
+                                "children":       [["value", "2"], ["type", "2"]],
+                                "function_name":  "returnTrue",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["["]]
+                              }, 
+
 
                                           {
-                                            "name":           ["value type"],
+                                            "name":           ["value", "2"],
                                             "nexts":          [],
                                             "start_children": [],
                                             "children":       [],
                                             "function_name":  "returnTrue",
-                                            "data":           {"nothing": "null"},
-                                            "parents":        [["pair"]]
-                                          },
+                                            "data":           {"String": ""},
+                                            "parents":        [["add entry", "2"]]
+                                          }, 
+
+                                          {
+                                            "name":           ["type", "2"],
+                                            "nexts":          [],
+                                            "start_children": [],
+                                            "children":       [],
+                                            "function_name":  "returnTrue",
+                                            "data":           {"String": ""},
+                                            "parents":        [["add entry", "2"]]
+                                          }, 
 
                                           {
                                             "name":           ["key"],
-                                            "nexts":          [[":"]],
+                                            "nexts":          [],
                                             "start_children": [ ["-"], ["#"],
                                                                 ["\""],
                                                                 ["true"],
@@ -1259,52 +1428,25 @@
                                             "children":       [["value", "key"]],
                                             "function_name":  "returnTrue",
                                             "data":           {"nothing": "null"},
-                                            "parents":        [["pair"]]
+                                            "parents":        [["element", "1"], ["element", "3"]]
                                           },
 
-                                              {
-                                                "name":           ["value", "key"],
-                                                "nexts":          [],
-                                                "start_children": [],
-                                                "children":       [],
-                                                "function_name":  "returnTrue",
-                                                "data":           {"nothing": "null"},
-                                                "parents":        [["key"]]
-                                              },
+                                              
 
-                                          {
-                                            "name":           [":"],
-                                            "nexts":          [],
-                                            "start_children": [],
-                                            "children":       [],
-                                            "function_name":  "returnTrue",
-                                            "data":           {"nothing": "null"},
-                                            "parents":        [["pair"]]
-                                          },
+                              {
+                                "name":           ["]"],
+                                "nexts":          [],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "returnTrue",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["]"]]
+                              }, 
+                             
 
-                                          {
-                                            "name":           ["value", "1"],
-                                            "nexts":          [[":"]],
-                                            "start_children": [ ["-"], ["#"],
-                                                                ["\""],
-                                                                ["true"],
-                                                                ["false"],
-                                                                ["nil"]],
-                                            "children":       [["value", "value"]],
-                                            "function_name":  "returnTrue",
-                                            "data":           {"nothing": "null"},
-                                            "parents":        [["pair"]]
-                                          },
+                                          
 
-                                          {
-                                            "name":           ["value", "value"],
-                                            "nexts":          [],
-                                            "start_children": [],
-                                            "children":       [],
-                                            "function_name":  "returnTrue",
-                                            "data":           {"nothing": "null"},
-                                            "parents":        [["value", "1"]]
-                                          },
+                                          
 
                                       {
                                         "name":           ["value"],
@@ -1317,90 +1459,17 @@
                                         "children":       [["value", "element"], ["is_list"], ["value type", "1"]],
                                         "function_name":  "returnTrue",
                                         "data":           {"nothing": "null"},
-                                        "parents":        [["element", "0"]]
+                                        "parents":        [["element", "2"], ["element", "4"]]
                                       },
 
-                                        {
-                                          "name":           ["value", "element"],
-                                          "nexts":          [],
-                                          "start_children": [],
-                                          "children":       [],
-                                          "function_name":  "returnTrue",
-                                          "data":           {"nothing": "null"},
-                                          "parents":        [["value"]]
-                                        },
-
-                                        {
-                                          "name":           ["is_list"],
-                                          "nexts":          [],
-                                          "start_children": [],
-                                          "children":       [],
-                                          "function_name":  "returnTrue",
-                                          "data":           {"nothing": "null"},
-                                          "parents":        [["value"]]
-                                        },
-
-                                        {
-                                          "name":           ["value type", "1"],
-                                          "nexts":          [],
-                                          "start_children": [],
-                                          "children":       [],
-                                          "function_name":  "returnTrue",
-                                          "data":           {"nothing": "null"},
-                                          "parents":        [["value"]]
-                                        },
-
-                              {
-                                "name":           ["dict"],
-                                "nexts":          [[","]],
-                                "start_children": [],
-                                "children":       [],
-                                "function_name":  "returnTrue",
-                                "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
-                              },
-
-                              {
-                                "name":           ["list"],
-                                "nexts":          [[","]],
-                                "start_children": [],
-                                "children":       [],
-                                "function_name":  "returnTrue",
-                                "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
-                              },
+                               
 
 
-                              {
-                                "name":           [","],
-                                "nexts":          [["element", "2"]],
-                                "start_children": [],
-                                "children":       [],
-                                "function_name":  "comma",
-                                "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
-                              },
 
-                              {
-                                "name":           ["element", "2"],
-                                "nexts":          [[","]],
-                                "start_children": [],
-                                "children":       [],
-                                "function_name":  "returnTrue",
-                                "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
-                              },
+                         
 
 
-                              {
-                                "name":           ["]"],
-                                "nexts":          [],
-                                "start_children": [],
-                                "children":       [],
-                                "function_name":  "rightSquareBraket",
-                                "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
-                              },
+
                               
 
 

@@ -97,12 +97,15 @@ let function_name_to_function: [String: ([String], inout Parser, ChildParent) ->
     "saveInitArrayString"           : saveInitArrayString,
 
     "colon3"                        : colon3,
+    "comma"                         : comma,
     "boolSaveValueType"             : boolSaveValueType,
     "intSaveValueType"              : intSaveValueType,
     "floatSaveValueType"            : floatSaveValueType,
     "stringSaveValueType"           : stringSaveValueType,
     "saveInitDict"                  : saveInitDict,
-    "noInitStateChar"               : noInitStateChar
+    "noInitStateChar"               : noInitStateChar,
+    
+    "endOfValueButNotOutOfBounds"   : endOfValueButNotOutOfBounds
 
 ]
 func deleteSecondToNNewLines(input: String) -> String
@@ -206,9 +209,13 @@ func readFile(path: String) -> String
 func run2()
 {
     //
+    
+    // the executable is 5 levels down in the project(the derived data folder is not in the repo)
+    // get parsing graph from backup
+    let five_levels_down = "../../../../../"
 
     var name_state_table = [[String]: ContextState]()
-    let data: String = readFile(path: "parsing_tree.json")
+    let data: String = readFile(path: five_levels_down + "parsing_tree.json")
     
     var my_struct: [x] = [x]()
     do
@@ -244,7 +251,7 @@ func run2()
     //print()
     }
     // "data_and_dead_state_parsing_only_input.txt"
-    name_state_table[["input"]]?.getData().setString(value: deleteSecondToNNewLines(input: readFile(path: "data_and_dead_state_parsing_only_input.txt")) )
+    name_state_table[["input"]]?.getData().setString(value: deleteSecondToNNewLines(input: readFile(path: five_levels_down + "data_and_dead_state_parsing_only_input.txt")) )
     //print((name_state_table[["input"]]?.getData().getString())!)
     let visitor_class: Visit = Visit.init(next_states: [["states", "state"]],
                                   current_state_name:    ["states", "state"],
