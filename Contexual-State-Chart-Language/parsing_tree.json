@@ -602,7 +602,7 @@
                                 "children":       [],
                                 "function_name":  "negative",
                                 "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
+                                "parents":        [["make structure"], ["key"], ["value"]]
                               }, 
 
                               {
@@ -612,7 +612,7 @@
                                 "children":       [],
                                 "function_name":  "digit",
                                 "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
+                                "parents":        [["make structure"], ["key"], ["value"]]
                               }, 
                               
                               {
@@ -685,7 +685,7 @@
                                 "children":       [],
                                 "function_name":  "doubleQuote",
                                 "data":           {"nothing": "null"},
-                                "parents":        [["make structure"], ["key"]]
+                                "parents":        [["make structure"], ["key"], ["value"]]
                               },
 
                               {
@@ -756,7 +756,7 @@
                                 "children":       [],
                                 "function_name":  "isTrue",
                                 "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
+                                "parents":        [["make structure"], ["key"], ["value"]]
                               },
 
                               {
@@ -766,7 +766,7 @@
                                 "children":       [],
                                 "function_name":  "isFalse",
                                 "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
+                                "parents":        [["make structure"], ["key"], ["value"]]
                               },
                               
 
@@ -778,7 +778,7 @@
                                 "children":       [],
                                 "function_name":  "isNil",
                                 "data":           {"nothing": "null"},
-                                "parents":        [["make structure"]]
+                                "parents":        [["make structure"], ["key"], ["value"]]
                               },
 
 
@@ -1240,7 +1240,7 @@
                                  
                               {
                                 "name":           ["element", "2"],
-                                "nexts":          [["add entry"]],
+                                "nexts":          [[",", "2"]],
                                 "start_children": [["value"]],
                                 "children":       [],
                                 "function_name":  "returnTrue",
@@ -1248,6 +1248,27 @@
                                 "parents":        [["["]]
                               }, 
 
+    
+                              {
+                                "name":           [":", "5"],
+                                "nexts":          [["element", "6"]],
+                                "start_children": [],
+                                "children":       [["key", "type", "2"], ["key", "entry", "2"]],
+                                "function_name":  "colon3",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["["]]
+                              }, 
+
+                                  
+                              {
+                                "name":           ["element", "6"],
+                                "nexts":          [["add entry"]],
+                                "start_children": [["value"]],
+                                "children":       [],
+                                "function_name":  "returnTrue",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["["]]
+                              }, 
 
                               {
                                 "name":           ["add entry"],
@@ -1284,7 +1305,7 @@
 
 
                                                       {
-                                                        "name":           ["key", "4"],
+                                                        "name":           ["value", "4"],
                                                         "nexts":          [],
                                                         "start_children": [],
                                                         "children":       [],
@@ -1338,7 +1359,7 @@
 
                               {
                                 "name":           ["element", "3"],
-                                "nexts":          [[":", "4"]],
+                                "nexts":          [[":", "5"]],
                                 "start_children": [["key"]],
                                 "children":       [],
                                 "function_name":  "returnTrue",
@@ -1459,7 +1480,7 @@
                                         "children":       [["value", "element"], ["is_list"], ["value type", "1"]],
                                         "function_name":  "returnTrue",
                                         "data":           {"nothing": "null"},
-                                        "parents":        [["element", "2"], ["element", "4"]]
+                                        "parents":        [["element", "2"], ["element", "4"], ["element", "6"]]
                                       },
 
                                

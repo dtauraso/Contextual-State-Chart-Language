@@ -544,8 +544,8 @@ class Visit {
             // when machine's stack is folded and done this echos the last state run from before the folding
             let point2: ContextState = self.name_state_table[self.current_state_name]!
 
-            print("winning state", self.current_state_name, "f=", point2.function_name)
-            print("next states", self.next_states)
+            //print("winning state", self.current_state_name, "f=", point2.function_name)
+            //print("next states", self.next_states)
             //printStack2(bottom_tracker: self.bottom_tracker)
             //print()
 

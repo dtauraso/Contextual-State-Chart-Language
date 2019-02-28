@@ -186,7 +186,7 @@ data and dead states
 							["1" : 1, "2":2,"3":3]
 					String -> Float
 						Data
-							["one" : 1.0, "two" : 2.0, "three", 3.0]
+							["one" : 1.0, "two" : 2.0, "three": 3.0]
 					Int -> Bool
 						Data
 							[1 : true, 2 : false, 3: nil]
