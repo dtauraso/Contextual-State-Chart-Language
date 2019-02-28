@@ -184,6 +184,13 @@ It correctly parses all examples except for the swift lists and swift dicts (not
 
 Update: It recognizes swift dicts using values of types string, int, and float.
 
+## How the parser works and why
+    Depth first traversal is used to save the name parts of each state.
+    Breath first traversal is used to save the remaining attributes of each state.
+    Both traversals are done iteratively.
+    Recursion was not used, because the focus was on the many unique situations the small groups of lines in the file presented.
+    A customized approach seemed to fit best at the time.
+    
 ## Let’s say you are finished with CSCL(Contextual State Chart Language).  How would you use it?
 
 	put the CSCL code in a file ending in “.txt”
@@ -201,6 +208,7 @@ Update: It recognizes swift dicts using values of types string, int, and float.
  For terminal programs:
  
 		Still in developement.
+
 
 ## Future Research
 
