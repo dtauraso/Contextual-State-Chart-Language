@@ -189,7 +189,7 @@ Update: It recognizes swift dicts using values of types string, int, and float.
     Breath first traversal is used to save the remaining attributes of each state.
     Both traversals are done iteratively.
     Recursion was not used, because the focus was on the many unique situations the small groups of lines in the file presented.
-    A customized approach seemed to fit best at the time.
+    A customized iterative approach seemed to fit best at the time.
     
 ## Let’s say you are finished with CSCL(Contextual State Chart Language).  How would you use it?
 
