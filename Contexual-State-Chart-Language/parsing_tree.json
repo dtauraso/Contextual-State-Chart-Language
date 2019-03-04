@@ -1275,7 +1275,7 @@
                                 "nexts":          [[",", "2"], ["]"]],
                                 "start_children": [],
                                 "children":       [["key", "2"], ["value", "3"]],
-                                "function_name":  "returnTrue",
+                                "function_name":  "addDictEntry",
                                 "data":           {"nothing": "null"},
                                 "parents":        [["["]]
                               }, 
@@ -1370,10 +1370,10 @@
 
                               {
                                 "name":           [","],
-                                "nexts":          [["element", "4"]],
+                                "nexts":          [["add entry", "2"]],
                                 "start_children": [],
                                 "children":       [["key", "type", "1"], ["key", "entry", "1"]],
-                                "function_name":  "returnTrue",
+                                "function_name":  "comma",
                                 "data":           {"nothing": "null"},
                                 "parents":        [["["]]
                               }, 
@@ -1399,7 +1399,7 @@
                                           }, 
                               {
                                 "name":           ["element", "4"],
-                                "nexts":          [["add entry", "2"],["]"]],
+                                "nexts":          [["]"], ["add entry", "3"]],
                                 "start_children": [["value"]],
                                 "children":       [],
                                 "function_name":  "returnTrue",
@@ -1410,34 +1410,16 @@
 
                               {
                                 "name":           ["add entry", "2"],
-                                "nexts":          [[","]],
+                                "nexts":          [["element", "4"]],
                                 "start_children": [],
-                                "children":       [["value", "2"], ["type", "2"]],
+                                "children":       [],
                                 "function_name":  "returnTrue",
                                 "data":           {"nothing": "null"},
                                 "parents":        [["["]]
                               }, 
 
 
-                                          {
-                                            "name":           ["value", "2"],
-                                            "nexts":          [],
-                                            "start_children": [],
-                                            "children":       [],
-                                            "function_name":  "returnTrue",
-                                            "data":           {"String": ""},
-                                            "parents":        [["add entry", "2"]]
-                                          }, 
-
-                                          {
-                                            "name":           ["type", "2"],
-                                            "nexts":          [],
-                                            "start_children": [],
-                                            "children":       [],
-                                            "function_name":  "returnTrue",
-                                            "data":           {"String": ""},
-                                            "parents":        [["add entry", "2"]]
-                                          }, 
+                              
 
                                           {
                                             "name":           ["key"],
@@ -1459,7 +1441,7 @@
                                 "nexts":          [],
                                 "start_children": [],
                                 "children":       [],
-                                "function_name":  "returnTrue",
+                                "function_name":  "printState",
                                 "data":           {"nothing": "null"},
                                 "parents":        [["]"]]
                               }, 
@@ -1482,9 +1464,55 @@
                                         "data":           {"nothing": "null"},
                                         "parents":        [["element", "2"], ["element", "4"], ["element", "6"]]
                                       },
-
+                              
+                              {
+                                "name":           ["add entry", "3"],
+                                "nexts":          [[",", "3"]],
+                                "start_children": [],
+                                "children":       [["value", "6"], ["type", "6"]],
+                                "function_name":  "returnTrue",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["["]]
+                              }, 
                                
 
+
+                                      {
+                                        "name":           ["value", "6"],
+                                        "nexts":          [],
+                                        "start_children": [],
+                                        "children":       [],
+                                        "function_name":  "returnTrue",
+                                        "data":           {"String": ""},
+                                        "parents":        [["["]]
+                                      }, 
+                                      {
+                                        "name":           ["type", "6"],
+                                        "nexts":          [],
+                                        "start_children": [],
+                                        "children":       [],
+                                        "function_name":  "returnTrue",
+                                        "data":           {"String": ""},
+                                        "parents":        [["["]]
+                                      }, 
+                              {
+                                "name":           [",", "3"],
+                                "nexts":          [["element", "5"]],
+                                "start_children": [],
+                                "children":       [],
+                                "function_name":  "comma",
+                                "data":           {"nothing": "null"},
+                                "parents":        [["["]]
+                              }, 
+                              {
+                                "name":           ["element", "5"],
+                                "nexts":          [["]"], ["add entry", "3"]],
+                                "start_children": [["value"]],
+                                "children":       [],
+                                "function_name":  "returnTrue",
+                                "data":           {"String": ""},
+                                "parents":        [["["]]
+                              }, 
 
 
                          

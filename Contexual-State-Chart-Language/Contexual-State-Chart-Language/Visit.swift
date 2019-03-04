@@ -223,7 +223,7 @@ class Visit {
         var formated_string = String()
         //formated_string.append(indents + "entered\n")
         formated_string.append(indents)
-
+        //print(node.getName())
         let indents_for_name = indents
         for name_part in node.getName()
         {
@@ -254,7 +254,7 @@ class Visit {
             //indents_for_name += "  "
             //print("before children")
             //print("|" + indents_for_name + "|")
-
+        
             formated_string.append(contentsOf: indents_for_name + "  ")
             formated_string.append("Children\n")
             //print(formated_string)
@@ -283,10 +283,20 @@ class Visit {
 
 
             }
+            print("visiting children")
             for name in node.getChildren()
             {
-                //print(name)
+                print(name)
                 //print(name_state_table.keys)
+                for i in point_table
+                {
+                    if (i.key == name)
+                    {
+                        print("found name")
+                        print(i, point_table[i.key])
+                        point_table[i.key]!.Print()
+                    }
+                }
                 let point = point_table[name]!
                 
                 let child_node = matrix[point]!
@@ -369,6 +379,12 @@ class Visit {
             }
             //formated_string.append(contentsOf: "\n")
         }
+        formated_string.append(contentsOf: indents_for_name + "  ")
+        formated_string.append("Data\n")
+        formated_string.append(contentsOf: indents_for_name + "    ")
+
+        formated_string.append(node.getData().Log())
+        formated_string.append("\n")
         //formated_string.append(indents + "exit\n")
 
         return formated_string
@@ -542,7 +558,7 @@ class Visit {
                 */
             }
             // when machine's stack is folded and done this echos the last state run from before the folding
-            let point2: ContextState = self.name_state_table[self.current_state_name]!
+            //let point2: ContextState = self.name_state_table[self.current_state_name]!
 
             //print("winning state", self.current_state_name, "f=", point2.function_name)
             //print("next states", self.next_states)
@@ -561,6 +577,13 @@ class Visit {
         //let matrix = name_state_table[["sparse_matrix"]]!.getData().data["[Point: ContextState]"] as! [Point: ContextState]
         //let point_table = name_state_table[["point_table"]]!.getData().data["[[String]: Point]"] as! [[String]: Point]
         //print(matrix.count)
+        //print(point_table)
+        
+        /*for i in point_table
+        {
+            print(i, point_table[i.key])
+        }*/
+        //exit(1)
         //let start_node = matrix[Point.init(l: 0, s: 0)]!
         /*
         let points = matrix.keys
@@ -571,7 +594,8 @@ class Visit {
             index = points.index(index, offsetBy: 1)
             print()
             print()
-        }*/
+        }
+        */
                       //  let matrix = name_state_table[["sparse_matrix"]]!.getData().data["[Point: ContextState]"] as! [Point: ContextState]
         /*
         let format_string = prettyFormat(node: start_node,

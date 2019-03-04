@@ -151,6 +151,106 @@ class Data {
         }
         
     }
+    func Log() -> String
+    {
+        //print(data)
+        if(getBool2() != "no bool value")
+        {
+            let x = self.data["Bool"]! as? Bool
+            return "Bool " +  String(x!)
+        }
+        else if(getInt() != -123)
+        {
+            let x = self.data["Int"]! as? Int
+            print(self.data)
+            return "Int " +  String(x!)
+        }
+        else if(getFloat() != -87654321.876543)
+        {
+            let x =  self.data["Float"]! as? Float
+            return "Float " + String(x!)
+        }
+        else if(getString() != "no String type is here")
+        {
+            if(self.data["String"]! as? String == "")
+            {
+                return "String " + "\"\""
+            }
+            else
+            {
+                let x = self.data["String"]! as? String
+                return "String " + x!
+            }
+        }
+        else if(getStringList() != ["no [String] type is here"])
+        {
+            let x = self.data["[String]"]! as? [String]
+            return "[String]" + x!.reduce("", +)
+        }
+        else if(Point.init(l: -1, s: -1) != Point.init(l: -1, s: -1))
+        {
+            let x = self.data["Point"]! as? Point
+            return "Point " + String(x!.getLevelId()) + " " + String(x!.getStateId())
+        }
+        else if(self.data["[Bool]"] != nil)
+        {
+            let x = self.data["[Bool]"]! as? [Bool]
+            let y = x!.map({String($0)})
+            return "[Bool]" +  y.reduce("", +)
+        }
+        else if(self.data["[String]"] != nil)
+        {
+            let x = self.data["[String]"]! as? [String]
+            let y = x!.map({String($0)})
+            return "[String]" + y.reduce("", +)
+        }
+        else if(self.data["[Int]"] != nil)
+        {
+            let x = self.data["[Int]"]! as? [Int]
+            let y = x!.map({String($0)})
+
+            return "[Int]" + y.reduce("", +)
+
+        }
+        else if(self.data["[Float]"] != nil)
+        {
+             let x = self.data["[Float]"]! as? [Float]
+             let y = x!.map({String($0)})
+
+            return "[Float]" + y.reduce("", +)
+            
+        }
+        // printing all dicts
+        else if(self.data.keys.count > 0)
+        {
+            let cookieHeader = (self.data.compactMap({ (key, value) -> String in
+            return "\(key)=\(value)"
+            }) as Array).joined(separator: "\n")
+
+            return cookieHeader
+            //let x: String = self.data.keys[self.data.keys.startIndex]
+            //print(x, self.data[x]!)
+
+        }
+       //["[String]"]
+//self.data["[Bool]"]// = value
+//["[Int]"]// = value
+//["[Float]"]
+        /*
+        else if(is_dict)
+        {
+            print("Dictionary", self.data["Dictionary"]!)
+        }
+        else if(is_array)
+        {
+            print("Array", self.data["Array"]!)
+        }*/
+        else
+        {
+            return "[:]"
+        }
+        
+    }
     func returnTrue(current_state_name: [String]) -> Bool
     {
         return true
@@ -311,68 +411,209 @@ class Data {
     }
     func setDict(key_0: String, key_1: String, value: [Bool: Bool])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
     func setDict(key_0: String, key_1: String, value: [Bool: Int])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
     func setDict(key_0: String, key_1: String, value: [Bool: Float])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
     func setDict(key_0: String, key_1: String, value: [Bool: String])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
     func setDict(key_0: String, key_1: String, value: [Int: Bool])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
     func setDict(key_0: String, key_1: String, value: [Int: Int])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
     func setDict(key_0: String, key_1: String, value: [Int: Float])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
-     func setDict(key_0: String, key_1: String, value: [Int: String])
+    func setDict(key_0: String, key_1: String, value: [Int: String])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
-     func setDict(key_0: String, key_1: String, value: [Float: Bool])
+    func setDict(key_0: String, key_1: String, value: [Float: Bool])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
-     func setDict(key_0: String, key_1: String, value: [Float: Int])
+    func setDict(key_0: String, key_1: String, value: [Float: Int])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
-     func setDict(key_0: String, key_1: String, value: [Float: Float])
+    func setDict(key_0: String, key_1: String, value: [Float: Float])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
-     func setDict(key_0: String, key_1: String, value: [Float: String])
+    func setDict(key_0: String, key_1: String, value: [Float: String])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
-     func setDict(key_0: String, key_1: String, value: [String: Bool])
+    func setDict(key_0: String, key_1: String, value: [String: Bool])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
-     func setDict(key_0: String, key_1: String, value: [String: Int])
+    func setDict(key_0: String, key_1: String, value: [String: Int])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
     func setDict(key_0: String, key_1: String, value: [String: Float])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
-     func setDict(key_0: String, key_1: String, value: [String: String])
+    func setDict(key_0: String, key_1: String, value: [String: String])
     {
-        self.data["[" + key_0 + ": " + key_1 + "]"] = value
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        self.data[dict_key] = value
     }
+    
+    func addDict(key_0: String, key_1: String, key: Bool, value: Bool)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        var small_dict = (self.data[dict_key] as? [Bool: Bool])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    func addDict(key_0: String, key_1: String, key: Bool, value: Int)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+
+        var small_dict = (self.data[dict_key] as? [Bool: Int])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    func addDict(key_0: String, key_1: String, key: Bool, value: Float)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+
+        var small_dict = (self.data[dict_key] as? [Bool: Float])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    func addDict(key_0: String, key_1: String, key: Bool, value: String)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        var small_dict = (self.data[dict_key] as? [Bool: String])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    func addDict(key_0: String, key_1: String, key: Int, value: Bool)
+    {
+        //print(key, value)
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        var small_dict = (self.data[dict_key] as? [Int: Bool])!
+        //print(self.data)
+
+        small_dict[key] = value
+        //print(small_dict)
+
+        self.data[dict_key] = small_dict
+        //print(self.data)
+    }
+    func addDict(key_0: String, key_1: String, key: Int, value: Int)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        var small_dict = (self.data[dict_key] as? [Int: Int])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    func addDict(key_0: String, key_1: String, key: Int, value: Float)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        var small_dict = (self.data[dict_key] as? [Int: Float])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    func addDict(key_0: String, key_1: String, key: Int, value: String)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        var small_dict = (self.data[dict_key] as? [Int: String])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    func addDict(key_0: String, key_1: String, key: Float, value: Bool)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        var small_dict = (self.data[dict_key] as? [Float: Bool])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    func addDict(key_0: String, key_1: String, key: Float, value: Int)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        var small_dict = (self.data[dict_key] as? [Float: Int])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    func addDict(key_0: String, key_1: String, key: Float, value: Float)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        var small_dict = (self.data[dict_key] as? [Float: Float])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    func addDict(key_0: String, key_1: String, key: Float, value: String)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        var small_dict = (self.data[dict_key] as? [Float: String])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    func addDict(key_0: String, key_1: String, key: String, value: Bool)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        var small_dict = (self.data[dict_key] as? [String: Bool])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    func addDict(key_0: String, key_1: String, key: String, value: Int)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        var small_dict = (self.data[dict_key] as? [String: Int])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    func addDict(key_0: String, key_1: String, key: String, value: Float)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        //print(self.data)
+        var small_dict = (self.data[dict_key] as? [String: Float])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    func addDict(key_0: String, key_1: String, key: String, value: String)
+    {
+        let dict_key = "[" + key_0 + ": " + key_1 + "]"
+        var small_dict = (self.data[dict_key] as? [String: String])!
+        small_dict[key] = value
+        self.data[dict_key] = small_dict
+    }
+    
+    // 4 set arrays
+    // 4 add arrays
     func setNil()
     {
         self.data["Nil"] = nil
@@ -405,17 +646,38 @@ class Data {
     }
 }
 
-
+// we want to allow random access for all links in ContextState, for dict simulation
+// start_children may be a key
+// the state's data value may be a value
+// each state can be interpreted as a (key, value), via (name, data_value)
+//if the name has more than 2 items, it can be used as a multidimentonal key
+func addToSet(elements: [[String]]) -> Set<[String]>
+{
+    var new_set = Set<[String]>()
+    for i in elements
+    {
+        new_set.insert(i)
+    }
+    return new_set
+    
+}
 class ContextState {
 
     var name:           [String]
     
     var start_children: [[String]]
+    var start_children_set: Set<[String]>
+
     var children:       [[String]]
+    var children_set:   Set<[String]>
+    
     var parents:        [[String]]
+    var parents_set:    Set<[String]>
     
     
     var nexts:          [[String]]
+    var nexts_set:      Set<[String]>
+    
     //name_state_table:
     var function:       ([String], inout Parser, ChildParent) -> Bool
     
@@ -448,6 +710,11 @@ class ContextState {
         self.data           =   Data.init(new_data:[:])
         self.parents        =   [[String]]()
         self.iteration_number = Int()
+        self.start_children_set = Set<[String]>()
+        self.children_set = Set<[String]>()
+        self.parents_set = Set<[String]>()
+        self.nexts_set = Set<[String]>()
+
     }
     init(name:                  [String],
          nexts:                 [[String]],
@@ -466,6 +733,10 @@ class ContextState {
         self.data           =   data
         self.parents        =   parents
         self.iteration_number = Int()
+        self.start_children_set = addToSet(elements: start_children)
+        self.children_set = addToSet(elements: children)
+        self.parents_set = addToSet(elements: parents)
+        self.nexts_set = addToSet(elements: nexts)
 
     }
     init(name:                  [String],
@@ -486,6 +757,10 @@ class ContextState {
         self.data           =   data
         self.parents        =   parents
         self.iteration_number = Int()
+        self.start_children_set = addToSet(elements: start_children)
+        self.children_set = addToSet(elements: children)
+        self.parents_set = addToSet(elements: parents)
+        self.nexts_set = addToSet(elements: nexts)
 
     }
     init(name:                  [String],
@@ -505,7 +780,10 @@ class ContextState {
         self.data           =   data
         self.parents        =   parents
         self.iteration_number = Int()
-
+        self.start_children_set = addToSet(elements: start_children)
+        self.children_set = addToSet(elements: children)
+        self.parents_set = addToSet(elements: parents)
+        self.nexts_set = addToSet(elements: nexts)
     }
     init(name: [String], function: @escaping ([String], inout Parser, ChildParent) -> Bool)
     {
@@ -518,27 +796,38 @@ class ContextState {
         self.data           =   Data.init(new_data: [:])
         self.parents        =   []
         self.iteration_number = Int()
+        self.start_children_set = Set<[String]>()
+        self.children_set = Set<[String]>()
+        self.parents_set = Set<[String]>()
+        self.nexts_set = Set<[String]>()
     }
     func appendStartChild(start_child: [String])
     {
         self.start_children.append(start_child)
+        self.start_children_set.insert(start_child)
     }
     func appendChild(child: [String])
     {
         self.children.append(child)
+        self.children_set.insert(child)
     }
     func setParents(parents: [[String]])
     {
         self.parents = parents
+        self.parents_set = addToSet(elements: parents)
     }
     func appendNextChild(next_child: [String])
     {
         self.nexts.append(next_child)
+        self.nexts_set.insert(next_child)
     }
     func setFunctionName(function_name: String)
     {
         self.function_name = function_name
     }
+    // append
+    // at
+    // elements
     func makeIndentString(indent_level: Int) -> String
     {
         var indent_string: String = String()

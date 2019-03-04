@@ -1476,6 +1476,7 @@ func notDoubleQuoteNotBackSlash(current_state_name: [String], parser: inout Pars
     let char = input[i]
     //print(x, input)
     //print(char, !(char == "\"" || char == "\\"))
+    //print(stack.getParent()?.getParent()?.getChild())
     if(!(char == "\"" || char == "\\"))
     {
         //print(stack.getChild(),stack.getParent()?.getChild(), stack.getParent()?.getChild() == ["make structure"])
@@ -1514,6 +1515,26 @@ func notDoubleQuoteNotBackSlash(current_state_name: [String], parser: inout Pars
             return true
             //exit(0)
         }
+        if(stack.getParent()?.getParent()?.getChild() == ["element", "6"])
+        {
+            //print("here")
+            collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
+            //print(parser.getVariable(state_name: ["x"]).getInt())
+            //print(input)
+            return true
+            //exit(0)
+        }
+        if(stack.getParent()?.getParent()?.getChild() == ["element", "4"])
+        {
+            //print("here")
+            collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
+            //print(parser.getVariable(state_name: ["x"]).getInt())
+            //print(input)
+            return true
+            //exit(0)
+        }
+        
+        
 
     }
     return false
@@ -1588,7 +1609,7 @@ func digit(current_state_name: [String], parser: inout Parser, stack: ChildParen
 {
     var x = parser.getVariable(state_name: ["x"]).getInt()
     let input = parser.getVariable(state_name: ["current_word"]).getString()
-        //print(x, input)
+    //print(x, input)
 
     x = skipSpaces(input: input, i: x)
 
@@ -1602,81 +1623,7 @@ func digit(current_state_name: [String], parser: inout Parser, stack: ChildParen
     }
     return false
 }
-func saveEntriesTrueFalseNil(current_state_name: [String], parser: inout Parser, stack: ChildParent, type_name: String)
-{
 
-    let upper_child = stack.getParent()?.getChild()
-    // we don't know if the data structure is a dict or list
-
-    if(upper_child == ["element", "1"])
-    {
-        // doesn't have anything
-        let string_saved = parser.getVariable(state_name: ["structure"]).getString()
-        //print(string_saved)
-        parser.getVariable(state_name: ["key", "entry", "2"]).setString(value: string_saved)
-        parser.getVariable(state_name: ["key", "type", "2"]).setString(value: type_name)
-
-        parser.getVariable(state_name: ["key", "entry", "1"]).setString(value: string_saved)
-        parser.getVariable(state_name: ["key", "type", "1"]).setString(value: type_name)
-        parser.getVariable(state_name: ["structure"]).setString(value: "")
-    }
-    // we know the data structure is a dict and what type it is so init and fill first item
-    else if(upper_child == ["element", "2"])
-    {
-    
-        //print(parser.getVariable(state_name: ["structure"]).getString())
-        let key_saved = ["key", "entry", "2"]
-        let key_type_saved = parser.getVariable(state_name: ["key", "type", "2"]).getString()
-        //parser.getVariable(state_name: ["value", "4"]).setString(value: key_saved)
-        //parser.getVariable(state_name: ["type", "3"]).setString(value: key_type_saved)
-     
-
-
-        let value_saved = ["structure"]
-
-        //parser.getVariable(state_name: ["value", "5"]).setString(value: value_saved)
-        //parser.getVariable(state_name: ["type", "4"]).setString(value: type_name)
-        var state = getLastStateSaved(parser: &parser)
-        // key storage location
-        // value storage location
-        if(!dictInit(key_location: key_saved, key_type: key_type_saved, value_location: value_saved, value_type: type_name, location_of_dict: &state, parser: &parser))
-        {
-            print("can't init the dict")
-            exit(1)
-        }
-     
-    }
-    // we know the data structure is a dict and have already set the type
-    else if(upper_child == ["element", "3"])
-    {
-        let key_saved = parser.getVariable(state_name: ["structure"]).getString()
-        parser.getVariable(state_name: ["value", "4"]).setString(value: key_saved)
-        parser.getVariable(state_name: ["type", "3"]).setString(value: type_name)
-    }
-    // we know the data structure is a list and what type it is and the first element has already been added
-    else if(upper_child == ["element", "4"])
-    {
-        let value_saved = parser.getVariable(state_name: ["structure"]).getString()
-        parser.getVariable(state_name: ["value", "6"]).setString(value: value_saved)
-        parser.getVariable(state_name: ["type", "6"]).setString(value: type_name)
-
-     
-    }
-    // we know the data structure is a list and what type it is and the second element has already been added
-    else if(upper_child == ["element", "5"])
-    {
-        let value_saved = parser.getVariable(state_name: ["structure"]).getString()
-        parser.getVariable(state_name: ["value", "6"]).setString(value: value_saved)
-        parser.getVariable(state_name: ["type", "6"]).setString(value: type_name)
-
-     
-    }
-    // the dict has already been initialized
-    else if(upper_child == ["element", "6"])
-    {
-    
-    }
-}
 func isTrue(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
 {
     //print("at isTrue")
@@ -1695,17 +1642,25 @@ func isTrue(current_state_name: [String], parser: inout Parser, stack: ChildPare
         {
             
            
-            let upper_child = stack.getParent()?.getChild()
+            let upper_child = (stack.getParent()?.getChild())!
             
             if(stack.child == ["make structure"])
             {
+                //print("failing")
+                // should not be setting it here
                 let state = getLastStateSaved(parser: &parser)
                 state.getData().setBool(value: true)
 
                 return true
             }
+           
+            //print("ready for adding")
+            //print(getLastStateSaved(parser: &parser).getData().data)
+            
             parser.getVariable(state_name: ["structure"]).setString(value: "true")
-            saveEntriesTrueFalseNil(current_state_name: current_state_name, parser: &parser, stack: stack, type_name: "Bool")
+            saveDataEntry(current_state_name: current_state_name, parser: &parser, stack: stack, type_name: "Bool", upper_child: upper_child)
+
+            //saveEntriesTrueFalseNil(current_state_name: current_state_name, parser: &parser, stack: stack, type_name: "Bool")
             //parser.getVariable(state_name: ["x"]).setInt(value: x + 4)
 
             if(stack.getParent()?.getChild() == ["element", "1"] ||
@@ -1762,7 +1717,10 @@ func isFalse(current_state_name: [String], parser: inout Parser, stack: ChildPar
 
                 return true
             }
-            else if(stack.getParent()?.getChild() == ["element", "1"] ||
+             parser.getVariable(state_name: ["structure"]).setString(value: "false")
+                saveDataEntry(current_state_name: current_state_name, parser: &parser, stack: stack, type_name: "Bool", upper_child: (stack.getParent()?.getChild())!)
+            
+            if(stack.getParent()?.getChild() == ["element", "1"] ||
                 stack.getParent()?.getChild() == ["element", "2"] ||
                 stack.getParent()?.getChild() == ["element", "3"] ||
                 stack.getParent()?.getChild() == ["element", "4"] ||
@@ -1775,8 +1733,8 @@ func isFalse(current_state_name: [String], parser: inout Parser, stack: ChildPar
                 //collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
                 //print(parser.getVariable(state_name: ["x"]).getInt())
                 //print(input)
-                let state = getLastStateSaved(parser: &parser)
-                state.getData().setBool(value: true)
+                //let state = getLastStateSaved(parser: &parser)
+                //state.getData().setBool(value: true)
                 parser.getVariable(state_name: ["x"]).setInt(value: x + 5)
                 return true
                 //exit(0)
@@ -1810,7 +1768,10 @@ func isNil(current_state_name: [String], parser: inout Parser, stack: ChildParen
 
                 return true
             }
-            else if(stack.getParent()?.getChild() == ["element", "1"] ||
+            parser.getVariable(state_name: ["structure"]).setString(value: "nil")
+            saveDataEntry(current_state_name: current_state_name, parser: &parser, stack: stack, type_name: "Nil", upper_child: (stack.getParent()?.getChild())!)
+            
+            if(stack.getParent()?.getChild() == ["element", "1"] ||
                 stack.getParent()?.getChild() == ["element", "2"] ||
                 stack.getParent()?.getChild() == ["element", "3"] ||
                 stack.getParent()?.getChild() == ["element", "4"] ||
@@ -1823,8 +1784,8 @@ func isNil(current_state_name: [String], parser: inout Parser, stack: ChildParen
                 //collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
                 //print(parser.getVariable(state_name: ["x"]).getInt())
                 //print(input)
-                let state = getLastStateSaved(parser: &parser)
-                state.getData().setBool(value: true)
+                //let state = getLastStateSaved(parser: &parser)
+                //state.getData().setBool(value: true)
                 parser.getVariable(state_name: ["x"]).setInt(value: x + 3)
                 return true
                 //exit(0)
@@ -2013,7 +1974,7 @@ func isKOutOfBounds(current_state_name: [String], parser: inout Parser, stack: C
                 // get the state
                 let state = getLastStateSaved(parser: &parser)
                 state.getData().setInt(value: Int(string)!)
-                //state.Print(indent_level: 0)
+                state.Print(indent_level: 0)
                 //exit(0)
                 // state.setInt(Int(parser.getVariable(state_name: ["structure"]).getString()))
                 return true
@@ -2029,7 +1990,7 @@ func isKOutOfBounds(current_state_name: [String], parser: inout Parser, stack: C
                 // get the state
                 let state = getLastStateSaved(parser: &parser)
                 state.getData().setFloat(value: Float(string)!)
-                //state.Print(indent_level: 0)
+                state.Print(indent_level: 0)
                 //exit(0)
                 return true
             }
@@ -2044,7 +2005,7 @@ func isKOutOfBounds(current_state_name: [String], parser: inout Parser, stack: C
                 // get the state
                 let state = getLastStateSaved(parser: &parser)
                 state.getData().setString(value: string)
-                //state.Print(indent_level: 0)
+                state.Print(indent_level: 0)
                 //exit(0)
                 return true
             }
@@ -2053,10 +2014,11 @@ func isKOutOfBounds(current_state_name: [String], parser: inout Parser, stack: C
     return false
 }
 // not associated with a state
-func saveDataEntry(current_state_name: [String], parser: inout Parser, stack: ChildParent, type_name: String)
+func saveDataEntry(current_state_name: [String], parser: inout Parser, stack: ChildParent, type_name: String, upper_child: [String])
 {
+    //print("in save data entry", upper_child)
     // we don't know if the data structure is a dict or list
-    let upper_child = stack.getParent()?.getParent()?.getChild()
+    //let upper_child = stack.getParent()?.getParent()?.getChild()
     if(upper_child == ["element", "1"])
     {
         let string_saved = parser.getVariable(state_name: ["structure"]).getString()
@@ -2088,7 +2050,11 @@ func saveDataEntry(current_state_name: [String], parser: inout Parser, stack: Ch
         // key storage location
         // value storage location
         dictInit(key_location: key_saved, key_type: key_type_saved, value_location: value_saved, value_type: type_name, location_of_dict: &state, parser: &parser)
-       
+        parser.getVariable(state_name: ["key", "entry", "2"]).setString(value: "")
+        parser.getVariable(state_name: ["key", "type", "2"]).setString(value: "")
+        parser.getVariable(state_name: ["structure"]).setString(value: "")
+
+
     }
     // we know the data structure is a dict and have already set the type
     else if(upper_child == ["element", "3"])
@@ -2096,7 +2062,12 @@ func saveDataEntry(current_state_name: [String], parser: inout Parser, stack: Ch
         let key_saved = parser.getVariable(state_name: ["structure"]).getString()
         parser.getVariable(state_name: ["value", "4"]).setString(value: key_saved)
         parser.getVariable(state_name: ["type", "3"]).setString(value: type_name)
+        parser.getVariable(state_name: ["structure"]).setString(value: "")
+        //print(getLastStateSaved(parser: &parser).getData().data)
+
     }
+    
+    // adding the [1, n]th element to the list will not be in this function
     // we know the data structure is a list and what type it is and the first element has already been added
     else if(upper_child == ["element", "4"])
     {
@@ -2112,15 +2083,71 @@ func saveDataEntry(current_state_name: [String], parser: inout Parser, stack: Ch
         let value_saved = parser.getVariable(state_name: ["structure"]).getString()
         parser.getVariable(state_name: ["value", "6"]).setString(value: value_saved)
         parser.getVariable(state_name: ["type", "6"]).setString(value: type_name)
-
         
     }
     // the dict has already been initialized
     else if(upper_child == ["element", "6"])
     {
-    
+        let value_saved = parser.getVariable(state_name: ["structure"]).getString()
+        parser.getVariable(state_name: ["value", "5"]).setString(value: value_saved)
+        parser.getVariable(state_name: ["type", "4"]).setString(value: type_name)
+        //print(getLastStateSaved(parser: &parser).getData().data)
+
     }
     
+}
+
+func addDictEntry(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
+{
+
+        //print("in add dict entry")
+        //print(getLastStateSaved(parser: &parser).getData().data)
+
+
+        let key_saved = ["value", "4"]//["key", "entry", "2"]
+        let key_type_saved = parser.getVariable(state_name: ["type", "3"]).getString()
+        //parser.getVariable(state_name: ["value", "4"]).setString(value: key_saved)
+        //parser.getVariable(state_name: ["type", "3"]).setString(value: key_type_saved)
+
+
+        let value_saved = ["value", "5"]
+        let value_type = parser.getVariable(state_name: ["type", "4"]).getString()
+        //parser.getVariable(state_name: ["value", "5"]).setString(value: value_saved)
+        //parser.getVariable(state_name: ["type", "4"]).setString(value: type_name)
+        var state = getLastStateSaved(parser: &parser)
+        //print(parser.getVariable(state_name: ["value", "4"]).getString())
+        //print(key_type_saved)
+        //print(parser.getVariable(state_name: ["value", "5"]).getString())
+        //print(value_type)
+    
+
+        // key storage location
+        // value storage location
+        dictAdd(   key_location: key_saved,
+                    key_type: key_type_saved,
+                    value_location: value_saved,
+                    value_type: value_type,
+                    location_of_dict: &state,
+                    parser: &parser)
+    
+        parser.getVariable(state_name: ["value", "4"]).setString(value: "")
+        parser.getVariable(state_name: ["type", "3"]).setString(value: "")
+        parser.getVariable(state_name: ["value", "5"]).setString(value: "")
+        parser.getVariable(state_name: ["type", "4"]).setString(value: "")
+        parser.getVariable(state_name: ["structure"]).setString(value: "")
+
+        //state.Print(indent_level: 0)
+        return true
+    
+    
+}
+func printState(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
+{
+    print("in print state")
+
+    let state = getLastStateSaved(parser: &parser)
+    state.Print(indent_level: 0)
+    return true
 }
 // for when the value being collected is part of a dict or list
 func endOfValueButNotOutOfBounds(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
@@ -2137,14 +2164,14 @@ func endOfValueButNotOutOfBounds(current_state_name: [String], parser: inout Par
         // int
         if(current_state_name == ["end of value but not out of bounds", "int"])
         {
-            saveDataEntry(current_state_name: current_state_name, parser: &parser, stack: stack, type_name: "Int")
+            saveDataEntry(current_state_name: current_state_name, parser: &parser, stack: stack, type_name: "Int", upper_child: (stack.getParent()?.getParent()?.getChild())!)
             return true
 
         }
         // float
         if(current_state_name == ["end of value but not out of bounds", "float"])
         {
-            saveDataEntry(current_state_name: current_state_name, parser: &parser, stack: stack, type_name: "Float")
+            saveDataEntry(current_state_name: current_state_name, parser: &parser, stack: stack, type_name: "Float", upper_child: (stack.getParent()?.getParent()?.getChild())!)
             return true
 
         }
@@ -2152,7 +2179,7 @@ func endOfValueButNotOutOfBounds(current_state_name: [String], parser: inout Par
         // string
         if(current_state_name == ["end of value but not out of bounds", "string"])
         {
-           saveDataEntry(current_state_name: current_state_name, parser: &parser, stack: stack, type_name: "String")
+            saveDataEntry(current_state_name: current_state_name, parser: &parser, stack: stack, type_name: "String", upper_child: (stack.getParent()?.getParent()?.getChild())!)
            return true
 
            
@@ -2517,108 +2544,134 @@ func saveInitDict(current_state_name: [String], parser: inout Parser, stack: Chi
 
 }
 ///////
-func dictInit(key_location: [String], key_type: String, value_location: [String], value_type: String, location_of_dict: inout ContextState, parser: inout Parser) -> Bool
+func dictInit(key_location: [String], key_type: String, value_location: [String], value_type: String, location_of_dict: inout ContextState, parser: inout Parser)
 {
     // make the dict
     let key = key_type
     let value = value_type
     let state = getLastStateSaved(parser: &parser)
-    var actual_key = parser.getVariable(state_name: key_location).getString()
-    var actual_value = parser.getVariable(state_name: value_location).getString()
-    var return_value = false
+    let actual_key = parser.getVariable(state_name: key_location).getString()
+    let actual_value = parser.getVariable(state_name: value_location).getString()
+    var set_dict = false
+    
     if(key == "Bool")
     {
-        if(value == "Bool")
+        if(value == "Nil")
+        {
+            state.getData().setDict(key_0: key, key_1: value, value: [Bool(actual_key)!: false])
+
+            set_dict = true
+        }
+        else if(value == "Bool")
         {
             state.getData().setDict(key_0: key, key_1: value, value: [Bool(actual_key)!: Bool(actual_value)!])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
-        if(value == "Int")
+        else if(value == "Int")
         {
             state.getData().setDict(key_0: key, key_1: value, value: [Bool(actual_key)!: Int(actual_value)!])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
-        if(value == "Float")
+        else if(value == "Float")
         {
+            //print("here here")
             state.getData().setDict(key_0: key, key_1: value, value: [Bool(actual_key)!: Float(actual_value)!])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
-        if(value == "String")
+        else if(value == "String")
         {
             state.getData().setDict(key_0: key, key_1: value, value: [Bool(actual_key)!: actual_value])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
         
     }
     if(key == "Int")
     {
-        if(value == "Bool")
+        if(value == "Nil")
+        {
+            state.getData().setDict(key_0: key, key_1: value, value: [Int(actual_key)!: false])
+
+            set_dict = true
+        }
+        else if(value == "Bool")
         {
             state.getData().setDict(key_0: key, key_1: value, value: [Int(actual_key)!: Bool(actual_value)!])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
-        if(value == "Int")
+        else if(value == "Int")
         {
             state.getData().setDict(key_0: key, key_1: value, value: [Int(actual_key)!: Int(actual_value)!])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
-        if(value == "Float")
+        else if(value == "Float")
         {
             state.getData().setDict(key_0: key, key_1: value, value: [Int(actual_key)!: Float(actual_value)!])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
-        if(value == "String")
+        else if(value == "String")
         {
             state.getData().setDict(key_0: key, key_1: value, value: [Int(actual_key)!: actual_value])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
         
     }
     if(key == "Float")
     {
-        if(value == "Bool")
+        if(value == "Nil")
+        {
+            state.getData().setDict(key_0: key, key_1: value, value: [Float(actual_key)!: false])
+
+            set_dict = true
+        }
+        else if(value == "Bool")
         {
             state.getData().setDict(key_0: key, key_1: value, value: [Float(actual_key)!: Bool(actual_value)!])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
-        if(value == "Int")
+        else if(value == "Int")
         {
             state.getData().setDict(key_0: key, key_1: value, value: [Float(actual_key)!: Int(actual_value)!])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
-        if(value == "Float")
+       else if(value == "Float")
         {
             state.getData().setDict(key_0: key, key_1: value, value: [Float(actual_key)!: Float(actual_value)!])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
-        if(value == "String")
+        else if(value == "String")
         {
             state.getData().setDict(key_0: key, key_1: value, value: [Float(actual_key)!: actual_value])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
         
     }
     if(key == "String")
     {
-        if(value == "Bool")
+        if(value == "Nil")
+        {
+            state.getData().setDict(key_0: key, key_1: value, value: [Bool(actual_key)!: false])
+
+            set_dict = true
+        }
+        else if(value == "Bool")
         {
             state.getData().setDict(key_0: key, key_1: value, value: [actual_key: Bool(actual_value)!])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
-        if(value == "Int")
+        else if(value == "Int")
         {
 
             state.getData().setDict(key_0: key, key_1: value, value: [actual_key:Int(actual_value)!])
@@ -2627,33 +2680,251 @@ func dictInit(key_location: [String], key_type: String, value_location: [String]
             //state.getData().data["[" + key_type_saved + ": " + type_name + "]"][x] = y
             //exit(0)
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
-        if(value == "Float")
+        else if(value == "Float")
         {
             state.getData().setDict(key_0: key, key_1: value, value: [actual_key: Float(actual_value)!])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
-        if(value == "String")
+        else if(value == "String")
         {
             state.getData().setDict(key_0: key, key_1: value, value: [actual_key: actual_value])
             //state.Print(indent_level: 0)
-            return_value = true
+            set_dict = true
         }
         
     }
-    if(return_value)
+    if(set_dict)
     {
-        state.Print(indent_level: 0)
+        //state.Print(indent_level: 0)
 
         parser.getVariable(state_name: key_location).setString(value: "")
         parser.getVariable(state_name: value_location).setString(value: "")
 
-        return true
+        //return true
     }
-    return false
+    //return false
 }
+func dictAdd(key_location: [String], key_type: String, value_location: [String], value_type: String, location_of_dict: inout ContextState, parser: inout Parser)
+{
+    // make the dict
+    let key = key_type
+    let value = value_type
+    let state = getLastStateSaved(parser: &parser)
+    let actual_key = parser.getVariable(state_name: key_location).getString()
+    let actual_value = parser.getVariable(state_name: value_location).getString()
+    var added_to_dict = false
+    
+    if(key == "Bool")
+    {
+        if(value == "Nil")
+        {
+            state.getData().addDict(key_0: key, key_1: "Bool", key: Bool(actual_key)!, value: false)
+            added_to_dict = true
+
+        }
+        else if(value == "Bool")
+        {
+            // add
+                    //self.data["[" + key_0 + ": " + key_1 + "]"] = value
+
+            state.getData().addDict(key_0: key, key_1: value, key: Bool(actual_key)!, value: Bool(actual_value)!)
+            //state.Print(indent_level: 0)
+            added_to_dict = true
+        }
+        else if(value == "Int")
+        {
+            state.getData().addDict(key_0: key, key_1: value, key: Bool(actual_key)!, value: Int(actual_value)!)
+            //state.Print(indent_level: 0)
+            added_to_dict = true
+        }
+        else if(value == "Float")
+        {
+            //print("here here")
+            state.getData().addDict(key_0: key, key_1: value, key: Bool(actual_key)!, value: Float(actual_value)!)
+            //state.Print(indent_level: 0)
+            added_to_dict = true
+        }
+        else if(value == "String")
+        {
+            state.getData().addDict(key_0: key, key_1: value, key: Bool(actual_key)!, value: actual_value)
+            //state.Print(indent_level: 0)
+            added_to_dict = true
+        }
+        
+    }
+    if(key == "Int")
+    {
+        if(value == "Nil")
+        {
+            state.getData().addDict(key_0: key, key_1: "Bool", key: Int(actual_key)!, value: false)
+            added_to_dict = true
+
+        }
+        else if(value == "Bool")
+        {
+            state.getData().addDict(key_0: key, key_1: value, key: Int(actual_key)!, value: Bool(actual_value)!)
+            //state.Print(indent_level: 0)
+            //exit(0)
+            added_to_dict = true
+        }
+        else if(value == "Int")
+        {
+            state.getData().addDict(key_0: key, key_1: value, key: Int(actual_key)!, value: Int(actual_value)!)
+            //state.Print(indent_level: 0)
+            added_to_dict = true
+        }
+        else if(value == "Float")
+        {
+            state.getData().addDict(key_0: key, key_1: value, key: Int(actual_key)!, value: Float(actual_value)!)
+            //state.Print(indent_level: 0)
+            added_to_dict = true
+        }
+        else if(value == "String")
+        {
+            state.getData().addDict(key_0: key, key_1: value, key: Int(actual_key)!, value: actual_value)
+            //state.Print(indent_level: 0)
+            added_to_dict = true
+        }
+        
+    }
+    if(key == "Float")
+    {
+        if(value == "Nil")
+        {
+            state.getData().addDict(key_0: key, key_1: "Bool", key: Float(actual_key)!, value: false)
+            added_to_dict = true
+        }
+        else if(value == "Bool")
+        {
+            state.getData().addDict(key_0: key, key_1: value, key: Float(actual_key)!, value: Bool(actual_value)!)
+            //state.Print(indent_level: 0)
+            added_to_dict = true
+        }
+        else if(value == "Int")
+        {
+            state.getData().addDict(key_0: key, key_1: value, key: Float(actual_key)!, value: Int(actual_value)!)
+            //state.Print(indent_level: 0)
+            added_to_dict = true
+        }
+       else if(value == "Float")
+        {
+            state.getData().addDict(key_0: key, key_1: value, key: Float(actual_key)!, value: Float(actual_value)!)
+            //state.Print(indent_level: 0)
+            added_to_dict = true
+        }
+        else if(value == "String")
+        {
+            state.getData().addDict(key_0: key, key_1: value, key: Float(actual_key)!, value: actual_value)
+            //state.Print(indent_level: 0)
+            added_to_dict = true
+        }
+        
+    }
+    if(key == "String")
+    {
+        if(value == "Nil")
+        {
+            state.getData().addDict(key_0: key, key_1: "Bool", key: actual_key, value: false)
+            added_to_dict = true
+        }
+        else if(value == "Bool")
+        {
+            state.getData().addDict(key_0: key, key_1: value, key: actual_key, value: Bool(actual_value)!)
+            //state.Print(indent_level: 0)
+            added_to_dict = true
+        }
+        else if(value == "Int")
+        {
+
+            state.getData().addDict(key_0: key, key_1: value, key: actual_key, value: Int(actual_value)!)
+            
+            
+            //state.getData().data["[" + key_type_saved + ": " + type_name + "]"][x] = y
+            //state.Print(indent_level: 0)
+
+            //exit(0)
+            added_to_dict = true
+        }
+        else if(value == "Float")
+        {
+            state.getData().addDict(key_0: key, key_1: value, key: actual_key, value: Float(actual_value)!)
+            //state.Print(indent_level: 0)
+            added_to_dict = true
+        }
+        else if(value == "String")
+        {
+            state.getData().addDict(key_0: key, key_1: value, key: actual_key, value: actual_value)
+            //state.Print(indent_level: 0)
+            added_to_dict = true
+        }
+        
+    }
+    if(added_to_dict)
+    {
+        //state.Print(indent_level: 0)
+
+        parser.getVariable(state_name: key_location).setString(value: "")
+        parser.getVariable(state_name: value_location).setString(value: "")
+
+        //return true
+    }
+    //return false
+}
+
+func arrayInit(element_location: [String], element_type: String, location_of_array: inout ContextState, parser: inout Parser)
+{
+
+    let type = element_type
+    let state = getLastStateSaved(parser: &parser)
+    let element = parser.getVariable(state_name: element_location).getString()
+    var set_array = false
+    
+    if(type == "Int")
+    {
+    
+    }
+    else if(type == "Float")
+    {
+    
+    }
+    else if(type == "Bool")
+    {
+    
+    }
+    else if(type == "String")
+    {
+    
+    }
+}
+func arrayAdd(element_location: [String], element_type: String, location_of_array: inout ContextState, parser: inout Parser)
+{
+
+    let type = element_type
+    let state = getLastStateSaved(parser: &parser)
+    let element = parser.getVariable(state_name: element_location).getString()
+    var set_array = false
+    
+    if(type == "Int")
+    {
+    
+    }
+    else if(type == "Float")
+    {
+    
+    }
+    else if(type == "Bool")
+    {
+    
+    }
+    else if(type == "String")
+    {
+    
+    }
+}
+
 /*
 func saveDictEntry(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
 {

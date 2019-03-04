@@ -105,7 +105,9 @@ let function_name_to_function: [String: ([String], inout Parser, ChildParent) ->
     "saveInitDict"                  : saveInitDict,
     "noInitStateChar"               : noInitStateChar,
     
-    "endOfValueButNotOutOfBounds"   : endOfValueButNotOutOfBounds
+    "endOfValueButNotOutOfBounds"   : endOfValueButNotOutOfBounds,
+    "addDictEntry"                  : addDictEntry,
+    "printState"                    : printState
 
 ]
 func deleteSecondToNNewLines(input: String) -> String
