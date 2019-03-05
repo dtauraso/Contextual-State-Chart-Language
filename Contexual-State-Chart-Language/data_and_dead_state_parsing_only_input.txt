@@ -209,6 +209,6 @@ data and dead states
 							[true, false, true]
 					Strings
 						Data
-							["1", "2", "3\"\\""]
+							["1", "2", "3\"\\\""]
 				Function
 					fdssss

@@ -708,6 +708,12 @@
                                 "parents":        [["make structure"]]
                               },
 
+
+                            
+
+
+
+
                               {
                                 "name":           ["any"],
                                 "nexts":          [["\\", "2"], ["not \" not \\"], ["\"", "2"]],
@@ -1413,7 +1419,7 @@
                                 "nexts":          [["element", "4"]],
                                 "start_children": [],
                                 "children":       [],
-                                "function_name":  "returnTrue",
+                                "function_name":  "addEntry2",
                                 "data":           {"nothing": "null"},
                                 "parents":        [["["]]
                               }, 
@@ -1441,7 +1447,7 @@
                                 "nexts":          [],
                                 "start_children": [],
                                 "children":       [],
-                                "function_name":  "printState",
+                                "function_name":  "rightSquareBraketForEndOfList",
                                 "data":           {"nothing": "null"},
                                 "parents":        [["]"]]
                               }, 
@@ -1462,15 +1468,15 @@
                                         "children":       [["value", "element"], ["is_list"], ["value type", "1"]],
                                         "function_name":  "returnTrue",
                                         "data":           {"nothing": "null"},
-                                        "parents":        [["element", "2"], ["element", "4"], ["element", "6"]]
+                                        "parents":        [["element", "2"], ["element", "4"], ["element", "6"], ["element", "5"]]
                                       },
                               
                               {
                                 "name":           ["add entry", "3"],
-                                "nexts":          [[",", "3"]],
+                                "nexts":          [["]"], [",", "3"]],
                                 "start_children": [],
                                 "children":       [["value", "6"], ["type", "6"]],
-                                "function_name":  "returnTrue",
+                                "function_name":  "addEntry3",
                                 "data":           {"nothing": "null"},
                                 "parents":        [["["]]
                               }, 
@@ -1506,7 +1512,7 @@
                               }, 
                               {
                                 "name":           ["element", "5"],
-                                "nexts":          [["]"], ["add entry", "3"]],
+                                "nexts":          [["add entry", "3"]],
                                 "start_children": [["value"]],
                                 "children":       [],
                                 "function_name":  "returnTrue",

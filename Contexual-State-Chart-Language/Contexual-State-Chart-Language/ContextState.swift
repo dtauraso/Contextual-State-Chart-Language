@@ -153,7 +153,7 @@ class Data {
     }
     func Log() -> String
     {
-        //print(data)
+        print(self.data)
         if(getBool2() != "no bool value")
         {
             let x = self.data["Bool"]! as? Bool
@@ -185,7 +185,7 @@ class Data {
         else if(getStringList() != ["no [String] type is here"])
         {
             let x = self.data["[String]"]! as? [String]
-            return "[String]" + x!.reduce("", +)
+            return "[String] " + x!.joined(separator: ", ")
         }
         else if(Point.init(l: -1, s: -1) != Point.init(l: -1, s: -1))
         {
@@ -196,20 +196,25 @@ class Data {
         {
             let x = self.data["[Bool]"]! as? [Bool]
             let y = x!.map({String($0)})
-            return "[Bool]" +  y.reduce("", +)
+            return "[Bool] " +  y.joined(separator: ", ")
         }
+        /*
         else if(self.data["[String]"] != nil)
         {
+            print("hwre")
+            exit(1)
             let x = self.data["[String]"]! as? [String]
-            let y = x!.map({String($0)})
-            return "[String]" + y.reduce("", +)
-        }
+            print(x)
+            exit(1)
+            //let y = x!.map({String($0)})
+            return "[String]" + x!.joined(separator: ", ")
+        }*/
         else if(self.data["[Int]"] != nil)
         {
             let x = self.data["[Int]"]! as? [Int]
             let y = x!.map({String($0)})
 
-            return "[Int]" + y.reduce("", +)
+            return "[Int] " + y.joined(separator: ", ")
 
         }
         else if(self.data["[Float]"] != nil)
@@ -217,7 +222,7 @@ class Data {
              let x = self.data["[Float]"]! as? [Float]
              let y = x!.map({String($0)})
 
-            return "[Float]" + y.reduce("", +)
+            return "[Float] " + y.joined(separator: ", ")
             
         }
         // printing all dicts
@@ -612,8 +617,62 @@ class Data {
         self.data[dict_key] = small_dict
     }
     
-    // 4 set arrays
-    // 4 add arrays
+    
+    
+    func setArray(type: String, value: Int)
+    {
+        let array_type = "[" + type + "]"
+        self.data[array_type] = [value]
+    }
+    func setArray(type: String, value: Float)
+    {
+        let array_type = "[" + type + "]"
+        self.data[array_type] = [value]
+    }
+    func setArray(type: String, value: Bool)
+    {
+        let array_type = "[" + type + "]"
+        self.data[array_type] = [value]
+    }
+    
+    func setArray(type: String, value: String)
+    {
+        let array_type = "[" + type + "]"
+        self.data[array_type] = [value]
+    }
+    
+    
+    func addArray(type: String, value: Int)
+    {
+        let array_type = "[" + type + "]"
+        var small_dict = (self.data[array_type] as? [Int])!
+        small_dict.append(value)
+        self.data[array_type] = small_dict
+    }
+    func addArray(type: String, value: Float)
+    {
+        let array_type = "[" + type + "]"
+        var small_dict = (self.data[array_type] as? [Float])!
+        small_dict.append(value)
+        self.data[array_type] = small_dict
+    }
+    func addArray(type: String, value: Bool)
+    {
+        let array_type = "[" + type + "]"
+        var small_dict = (self.data[array_type] as? [Bool])!
+        small_dict.append(value)
+        self.data[array_type] = small_dict
+    }
+    
+    func addArray(type: String, value: String)
+    {
+        let array_type = "[" + type + "]"
+        var small_dict = (self.data[array_type] as? [String])!
+        small_dict.append(value)
+        self.data[array_type] = small_dict
+    }
+
+
     func setNil()
     {
         self.data["Nil"] = nil

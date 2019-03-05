@@ -72,6 +72,8 @@ let function_name_to_function: [String: ([String], inout Parser, ChildParent) ->
     "doubleQuote"                   : doubleQuote,
     "notDoubleQuoteNotBackSlash"    : notDoubleQuoteNotBackSlash,
     "backSlash2"                    : backSlash2,
+    "escapeBackSlash"               : escapeBackSlash,
+    "escapeNotBackSlash"            : escapeNotBackSlash,
     "any"                           : any,
     "negative"                      : negative,
     "dot"                           : dot,
@@ -107,7 +109,10 @@ let function_name_to_function: [String: ([String], inout Parser, ChildParent) ->
     
     "endOfValueButNotOutOfBounds"   : endOfValueButNotOutOfBounds,
     "addDictEntry"                  : addDictEntry,
-    "printState"                    : printState
+    "printState"                    : printState,
+    "addEntry2"                     : addEntry2,
+    "addEntry3"                     : addEntry3,
+    "rightSquareBraketForEndOfList" : rightSquareBraketForEndOfList
 
 ]
 func deleteSecondToNNewLines(input: String) -> String

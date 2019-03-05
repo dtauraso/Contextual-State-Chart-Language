@@ -382,7 +382,7 @@ class Visit {
         formated_string.append(contentsOf: indents_for_name + "  ")
         formated_string.append("Data\n")
         formated_string.append(contentsOf: indents_for_name + "    ")
-
+        print("printing data")
         formated_string.append(node.getData().Log())
         formated_string.append("\n")
         //formated_string.append(indents + "exit\n")
@@ -574,8 +574,8 @@ class Visit {
         print("state machine is done\n")
         print("total states run", self.ii)
     
-        //let matrix = name_state_table[["sparse_matrix"]]!.getData().data["[Point: ContextState]"] as! [Point: ContextState]
-        //let point_table = name_state_table[["point_table"]]!.getData().data["[[String]: Point]"] as! [[String]: Point]
+        let matrix = name_state_table[["sparse_matrix"]]!.getData().data["[Point: ContextState]"] as! [Point: ContextState]
+        let point_table = name_state_table[["point_table"]]!.getData().data["[[String]: Point]"] as! [[String]: Point]
         //print(matrix.count)
         //print(point_table)
         
@@ -584,7 +584,8 @@ class Visit {
             print(i, point_table[i.key])
         }*/
         //exit(1)
-        //let start_node = matrix[Point.init(l: 0, s: 0)]!
+        
+        let start_node = matrix[Point.init(l: 0, s: 0)]!
         /*
         let points = matrix.keys
         var index = points.startIndex
@@ -596,8 +597,9 @@ class Visit {
             print()
         }
         */
+        
                       //  let matrix = name_state_table[["sparse_matrix"]]!.getData().data["[Point: ContextState]"] as! [Point: ContextState]
-        /*
+        
         let format_string = prettyFormat(node: start_node,
                                          indents: "",
                                          start_child: false,
@@ -605,7 +607,7 @@ class Visit {
                                          point_table: point_table)
         
         print(format_string)
-        */
+        
         for i in parser.unresolved_list
         {
                 print(i.key)
