@@ -63,8 +63,10 @@ let function_name_to_function: [String: ([String], inout Parser, ChildParent) ->
     "windBackStateNameFromEnd"      : windBackStateNameFromEnd,
     "isAStateName"                  : isAStateName,
     "isCurrentIndentSameAsIndentForLevel" : isCurrentIndentSameAsIndentForLevel,
-    "deleteCurrentStateName"        : deleteCurrentStateName,
     "isCurrentIndentGreaterThanAsIndentForLevel" : isCurrentIndentGreaterThanAsIndentForLevel,
+    "isCurrentIndentLessThanAsIndentForLevel" : isCurrentIndentLessThanAsIndentForLevel,
+
+    "deleteCurrentStateName"        : deleteCurrentStateName,
     "deleteTheLastContext"          : deleteTheLastContext,
     "incrementTheStateId"           : incrementTheStateId,
     "decreaseMaxStackIndex"         : decreaseMaxStackIndex,
@@ -72,8 +74,6 @@ let function_name_to_function: [String: ([String], inout Parser, ChildParent) ->
     "doubleQuote"                   : doubleQuote,
     "notDoubleQuoteNotBackSlash"    : notDoubleQuoteNotBackSlash,
     "backSlash2"                    : backSlash2,
-    "escapeBackSlash"               : escapeBackSlash,
-    "escapeNotBackSlash"            : escapeNotBackSlash,
     "any"                           : any,
     "negative"                      : negative,
     "dot"                           : dot,
@@ -115,6 +115,7 @@ let function_name_to_function: [String: ([String], inout Parser, ChildParent) ->
     "rightSquareBraketForEndOfList" : rightSquareBraketForEndOfList
 
 ]
+
 func deleteSecondToNNewLines(input: String) -> String
 {
     var new_input = String()
@@ -258,7 +259,9 @@ func run2()
     //print()
     }
     // "data_and_dead_state_parsing_only_input.txt"
-    name_state_table[["input"]]?.getData().setString(value: deleteSecondToNNewLines(input: readFile(path: five_levels_down + "data_and_dead_state_parsing_only_input.txt")) )
+    // "parsing_only_input.txt"
+    // test file: "parsing_test_from_slides.txt"
+    name_state_table[["input"]]?.getData().setString(value: deleteSecondToNNewLines(input: readFile(path: five_levels_down + "parsing_test_from_slides.txt")) )
     //print((name_state_table[["input"]]?.getData().getString())!)
     let visitor_class: Visit = Visit.init(next_states: [["states", "state"]],
                                   current_state_name:    ["states", "state"],
@@ -272,15 +275,42 @@ func run2()
                                                                            data: Data.init(new_data: [:]),
                                                                            parents: []),
                                   name_state_table:     name_state_table)
+
     // need to get the states into name_state_table
     //parser.runParser()
     // read in the json file
     // make the ContextState objects and store them into parser
 
-
     var parsing_object = Parser.init()
     parsing_object.name_state_table = name_state_table
     visitor_class.visitStates(start_state: name_state_table[["states", "state"]]!, parser: &parsing_object, function_name_to_function: function_name_to_function)
+    //exit(0)
+
+    let matrix = name_state_table[["sparse_matrix"]]!.getData().data["[Point: ContextState]"] as! [Point: ContextState]
+    let point_table = name_state_table[["point_table"]]!.getData().data["[[String]: Point]"] as! [[String]: Point]
+
+// make another visitor class
+        let visitor_class2: Visit = Visit.init(next_states: [["start"]],
+                                  current_state_name:    ["states", "state"],
+                                  bottom:                ChildParent.init(child: ["root", "0"],
+                                                                          parent: nil),
+                                  dummy_node:            ContextState.init(name:["root", "0"],
+                                                                           nexts: [],
+                                                                           start_children: [],
+                                                                           function: returnTrue(current_state_name:parser:stack:),
+                                                                           function_name: "returnTrue",
+                                                                           data: Data.init(new_data: [:]),
+                                                                           parents: []),
+                                  name_state_table:     name_state_table,
+                                  matrix: matrix,
+                                  point_table: point_table
+                                  )
+    
+    visitor_class2.visitStates2(start_state: visitor_class2.getState(state_name: ["start"])
+                    /*, end_state: ContextState*/,
+                    parser: &parsing_object,   // for returnTrue only
+                    function_name_to_function: function_name_to_function)
+
     //var json_data = data.data(using: .utf8)!
     //print(json_data)
     //let jsonDecoder = JSONDecoder()

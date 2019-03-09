@@ -1,0 +1,64 @@
+start
+	Children
+		input
+			Data
+				["(",  "5", "x", "7", "8", ")"]
+		-(
+			Next
+				letters_and_digits
+			Function
+				returnTrue
+
+		letters_and_digits
+			Children
+				digit
+					-0
+						Next
+							letters / 0
+						Function
+							returnTrue
+					1
+						Next
+							digit / 2
+						Function
+							returnTrue
+					2
+					3
+						Next
+							digit / 4
+						Function
+							returnFalse
+					4
+						Next
+							letters / 2
+						Function
+							returnFalse
+				letters
+					-0
+						Next
+							digit / 1
+						Function
+							returnTrue
+					1
+						Next
+							digit / 3
+						Function
+							returnFalse
+					2
+
+				No letters and no digits
+					Next
+						)
+					Function
+
+						returnTrue
+			Function
+				returnTrue
+		)
+			Next
+				None
+			Function
+				returnFalse
+		None
+	Function
+		returnTrue

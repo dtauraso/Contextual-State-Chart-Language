@@ -187,9 +187,18 @@ data and dead states
 					String -> Float
 						Data
 							["one" : 1.0, "two" : 2.0, "three": 3.0]
+					String -> Bool
+						Data
+							["1" : true, "2" : false, "3" : false]
+					String -> String
+						Data
+							["1" : "true", "2" : "false", "3" : "false"]
 					Int -> Bool
 						Data
 							[1 : true, 2 : false, 3: nil]
+					Int -> Float
+						Data
+							[1 : 1.0, 2 : 2.0, 3: 3.0]
 					float -> Bool
 						Data
 							[1.0 : true, 2.3 : false, 3.9: nil]

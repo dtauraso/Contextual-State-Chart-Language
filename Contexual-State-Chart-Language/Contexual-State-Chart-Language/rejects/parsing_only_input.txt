@@ -1,0 +1,124 @@
+entry class
+	Children
+		-start
+			Next
+				view did load regular
+			Function
+				SviewDidLoad(param1:param2:) runs start
+		&view did load regular
+		task fst
+			Children
+				-view did load regular
+					Next
+						task window / 999
+					Function
+						viewDidLoadRegular
+				-last view gone
+					Next
+						task window
+					Function
+						lastViewGone
+				task window
+					Next
+						delete nested item in task view / testing
+						task / a task / another context
+						check mark / what is this?
+						cal
+					Function
+						taskWindow
+				delete nested item in task view
+					Next
+						last_view_gone
+					Function
+						deleteNestedItemInTaskView
+				task
+					Next
+						view_did_load_regular
+					Function
+						task
+				cal
+					Next
+						view_did_load_regular / 2
+					Function
+						cal
+				cell
+					Children
+						-check_mark
+							Next
+								end
+							Function
+								checkMark
+						end
+						timer
+							Next
+								timer_has_been_recorded
+								record_time
+							Function
+								timer
+						timer_has_been_recorded
+							Next
+								stop_timer
+							Function
+								timerHasBeenRecorded
+						stop_timer
+							Next
+								end
+							Function
+								stopTimer
+						record_time
+							Next
+								end
+							Function
+								recordTime
+						info
+							Next
+								clicked_back
+							Function
+								info
+					Function
+						cell
+			Function
+				taskFst
+		calendarFST
+			Children
+				view_did_load_regular
+					-2
+						Next
+							tasks
+						Function
+							viewDidLoadRegular2
+					1
+						Next
+							gfds
+						Function
+							rgfertrg8
+					3
+						4
+							Next
+								5ytgfrg
+							Function
+								rg5ergfd0
+				tasks
+					Next
+						task
+					Function
+						tasks
+			Function
+				calendarFst
+		transfer_to_entry_class
+			Next
+				view_did_load_for_nested
+			Function
+				transferToEntryClass
+		view_did_load_for_nested
+			Next
+				view_did_load_nested
+			Function
+				viewDidLoadforNested
+		view_did_load_nested
+			Next
+				task_window
+			Function
+				viewDidLoadNested
+	Function
+		SviewDidLoad(param1:param2:) runs entryClass

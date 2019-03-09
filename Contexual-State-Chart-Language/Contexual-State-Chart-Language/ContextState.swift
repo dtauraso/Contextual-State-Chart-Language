@@ -153,7 +153,7 @@ class Data {
     }
     func Log() -> String
     {
-        print(self.data)
+        //print(self.data)
         if(getBool2() != "no bool value")
         {
             let x = self.data["Bool"]! as? Bool
@@ -162,7 +162,7 @@ class Data {
         else if(getInt() != -123)
         {
             let x = self.data["Int"]! as? Int
-            print(self.data)
+            //print(self.data)
             return "Int " +  String(x!)
         }
         else if(getFloat() != -87654321.876543)

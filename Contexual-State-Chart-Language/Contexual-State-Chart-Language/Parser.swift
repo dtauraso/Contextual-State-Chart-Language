@@ -12,6 +12,8 @@ import Foundation
 class Parser {
     
     var unresolved_list: [[String]: [Point]] = [[String]: [Point]]()
+    
+    // states for the parser
     var name_state_table: [[String]: ContextState] = [[String]: ContextState]()
     func getState(state_name: [String]) -> ContextState
     {
@@ -204,6 +206,7 @@ func advanceLoop(current_state_name: [String], parser: inout Parser, stack: Chil
     var index = input.index(input.startIndex, offsetBy: String.IndexDistance(i))
     parser.getVariable(state_name: ["prev_prev_indent"]).setInt(value: prev_indent)
     // input[index] is not supposed to = '\n'
+    //print("prev prev", prev_word)
     if(outOfBounds(i: i, size: input.count))
     {
         return false
@@ -274,7 +277,16 @@ func advanceLoop(current_state_name: [String], parser: inout Parser, stack: Chil
     next_indent = indent_count
 
     i = index.encodedOffset
+    
+    /*print("prev", prev_word)
+    print("prev indent", prev_indent)
+    print("current", current_word)
+    print("next indent", next_indent)
+    print("current level", parser.getVariable(state_name: ["max_stack_index"]).getInt())
 
+    print()
+    print()
+    */
     parser.getVariable(state_name: ["i"]).setInt(value: i)
 
     parser.getVariable(state_name: ["prev_word"]).setString(value: prev_word)
@@ -564,7 +576,7 @@ func isData(current_state_name: [String], parser: inout Parser, stack: ChildPare
 }
 func printData(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
 {
-    print(parser.getVariable(state_name: ["current_word"]).getString())
+    //print(parser.getVariable(state_name: ["current_word"]).getString())
     parser.getVariable(state_name: ["x"]).setInt(value: 0)
     parser.getVariable(state_name: ["structure"]).setString(value: "")
     parser.getVariable(state_name: ["dict init key type"]).setString(value: "")
@@ -706,7 +718,8 @@ func saveState(current_state_name: [String], parser: inout Parser, stack: ChildP
     //let context_state = parser.getVariable(state_name: ["sparse_matrix"]).getContextStateFromPointToContextState(key: point)
     
     //context_state.Print(indent_level: level)
-
+    //print()
+    //print()
     return true
     
 }
@@ -789,12 +802,12 @@ func advanceLevel(current_state_name: [String], parser: inout Parser, stack: Chi
         
         // grow stack
         parser.getVariable(state_name: ["max_stack_index"]).setInt(value: max_stack_index)
-
+        //print("+1", max_stack_index)
     }
     // copy over
     else
     {
-
+        //print("+1", max_stack_index + 1)
         parser.getVariable(state_name: ["max_stack_index"]).setInt(value: max_stack_index + 1)
         let last_value = parser.getVariable(state_name: ["state_number", String(max_stack_index + 1)]).getInt()
         
@@ -1345,27 +1358,67 @@ func isAStateName(current_state_name: [String], parser: inout Parser, stack: Chi
 func isCurrentIndentSameAsIndentForLevel(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
 {
     // already incremented to the state name, so the next indent is pointing to the Children word(the next indent is past the current word of consideration)
+    //print("in isCurrentIndentSameAsIndentForLevel")
     let prev_indent = parser.getVariable(state_name: ["prev_indent"]).getInt()
     let max_stack_index = parser.getVariable(state_name: ["max_stack_index"]).getInt()
+    let prev_word = parser.getVariable(state_name: ["prev_word"]).getString()
+    let current_word = parser.getVariable(state_name: ["current_word"]).getString()
+    let next_indent = parser.getVariable(state_name: ["next_indent"]).getInt()
     
     let current_level_indent_number = parser.getVariable(state_name: ["indent_number", String(max_stack_index)]).getInt()
-
+   /* print("prev", prev_word)
+    print("prev indent", prev_indent)
+    print("current", current_word)
+    print("next indent", next_indent)
+    
+    print("current level", current_level_indent_number)
+    */
     return prev_indent == current_level_indent_number
 }
-func deleteCurrentStateName(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
-{
-    parser.getVariable(state_name: ["name", "state_name"]).setStringList(value: [])
-    return true
-}
+
 func isCurrentIndentGreaterThanAsIndentForLevel(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
 {
     // already incremented to the state name, so the next indent is pointing to the Children word(the next indent is past the current word of consideration)
     let prev_indent = parser.getVariable(state_name: ["prev_indent"]).getInt()
     let max_stack_index = parser.getVariable(state_name: ["max_stack_index"]).getInt()
+    let prev_word = parser.getVariable(state_name: ["prev_word"]).getString()
+    let current_word = parser.getVariable(state_name: ["current_word"]).getString()
+    let next_indent = parser.getVariable(state_name: ["next_indent"]).getInt()
 
     let current_level_indent_number = parser.getVariable(state_name: ["indent_number", String(max_stack_index)]).getInt()
-
+   /* print("prev", prev_word)
+    print("prev indent", prev_indent)
+    print("current", current_word)
+    print("next indent", next_indent)
+    
+    print("current level", current_level_indent_number)
+*/
     return prev_indent > current_level_indent_number
+}
+func isCurrentIndentLessThanAsIndentForLevel(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
+{
+    // already incremented to the state name, so the next indent is pointing to the Children word(the next indent is past the current word of consideration)
+    let prev_indent = parser.getVariable(state_name: ["prev_indent"]).getInt()
+    let max_stack_index = parser.getVariable(state_name: ["max_stack_index"]).getInt()
+    let prev_word = parser.getVariable(state_name: ["prev_word"]).getString()
+    let current_word = parser.getVariable(state_name: ["current_word"]).getString()
+    let next_indent = parser.getVariable(state_name: ["next_indent"]).getInt()
+
+    let current_level_indent_number = parser.getVariable(state_name: ["indent_number", String(max_stack_index)]).getInt()
+    /*print("prev", prev_word)
+    print("prev indent", prev_indent)
+    print("current", current_word)
+    print("next indent", next_indent)
+    
+    print("current level", current_level_indent_number)
+    */
+    return prev_indent < current_level_indent_number
+}
+
+func deleteCurrentStateName(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
+{
+    parser.getVariable(state_name: ["name", "state_name"]).setStringList(value: [])
+    return true
 }
 func isTheDataStateOuter(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
 {
@@ -1429,7 +1482,7 @@ func decreaseMaxStackIndex(current_state_name: [String], parser: inout Parser, s
 {
     let max_stack_index = parser.getVariable(state_name: ["max_stack_index"]).getInt()
     parser.getVariable(state_name: ["max_stack_index"]).setInt(value: max_stack_index - 1)
-
+    //print("-1")
 
     return true
     
@@ -1487,7 +1540,14 @@ func notDoubleQuoteNotBackSlash(current_state_name: [String], parser: inout Pars
             return true
 
         }
-        if(stack.getParent()?.getParent()?.getChild() == ["element", "1"])
+        let upper_child = stack.getParent()?.getParent()?.getChild()
+        if( upper_child == ["element", "1"] ||
+            upper_child == ["element", "3"] ||
+            upper_child == ["element", "2"] ||
+            upper_child == ["element", "6"] ||
+            upper_child == ["element", "4"] ||
+            upper_child == ["element", "5"]
+        )
         {
             //print("here")
             collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
@@ -1496,52 +1556,7 @@ func notDoubleQuoteNotBackSlash(current_state_name: [String], parser: inout Pars
             return true
             //exit(0)
         }
-        // missing the case for element / 3
-        if(stack.getParent()?.getParent()?.getChild() == ["element", "3"])
-        {
-            //print("here")
-            collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
-            //print(parser.getVariable(state_name: ["x"]).getInt())
-            //print(input)
-            return true
-            //exit(0)
-        }
-        if(stack.getParent()?.getParent()?.getChild() == ["element", "2"])
-        {
-            //print("here")
-            collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
-            //print(parser.getVariable(state_name: ["x"]).getInt())
-            //print(input)
-            return true
-            //exit(0)
-        }
-        if(stack.getParent()?.getParent()?.getChild() == ["element", "6"])
-        {
-            //print("here")
-            collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
-            //print(parser.getVariable(state_name: ["x"]).getInt())
-            //print(input)
-            return true
-            //exit(0)
-        }
-        if(stack.getParent()?.getParent()?.getChild() == ["element", "4"])
-        {
-            //print("here")
-            collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
-            //print(parser.getVariable(state_name: ["x"]).getInt())
-            //print(input)
-            return true
-            //exit(0)
-        }
-        if(stack.getParent()?.getParent()?.getChild() == ["element", "5"])
-        {
-            //print("here")
-            collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
-            //print(parser.getVariable(state_name: ["x"]).getInt())
-            //print(input)
-            return true
-            //exit(0)
-        }
+
         
         
 
@@ -1555,7 +1570,7 @@ func escapeBackSlash(current_state_name: [String], parser: inout Parser, stack: 
     let input = parser.getVariable(state_name: ["current_word"]).getString()
     let i = input.index(input.startIndex, offsetBy: String.IndexDistance(x))
     let char = input[i]
-    print(x, input)
+    //print(x, input)
     if(!(char == "\\"))
     {
         if(stack.getParent()?.getChild() == ["make structure"])
@@ -1603,7 +1618,7 @@ func escapeNotBackSlash(current_state_name: [String], parser: inout Parser, stac
     let input = parser.getVariable(state_name: ["current_word"]).getString()
     let i = input.index(input.startIndex, offsetBy: String.IndexDistance(x))
     let char = input[i]
-    print(x, input)
+    //print(x, input)
     if(!(char == "\\"))
     {
         if(stack.getParent()?.getChild() == ["make structure"])
@@ -1639,7 +1654,7 @@ func backSlash2(current_state_name: [String], parser: inout Parser, stack: Child
     let input = parser.getVariable(state_name: ["current_word"]).getString()
     let i = input.index(input.startIndex, offsetBy: String.IndexDistance(x))
     let char = input[i]
-    print(x, input)
+    //print(x, input)
     if(char == "\\")
     {
         if(stack.getParent()?.getChild() == ["make structure"])
@@ -1683,7 +1698,14 @@ func any(current_state_name: [String], parser: inout Parser, stack: ChildParent)
             return true
 
         }
-        if(stack.getParent()?.getParent()?.getChild() == ["element", "1"])
+        let upper_child = stack.getParent()?.getParent()?.getChild()
+        if( upper_child == ["element", "1"] ||
+            upper_child == ["element", "3"] ||
+            upper_child == ["element", "2"] ||
+            upper_child == ["element", "6"] ||
+            upper_child == ["element", "4"] ||
+            upper_child == ["element", "5"]
+        )
         {
             //print("here")
             collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
@@ -1692,52 +1714,7 @@ func any(current_state_name: [String], parser: inout Parser, stack: ChildParent)
             return true
             //exit(0)
         }
-        // missing the case for element / 3
-        if(stack.getParent()?.getParent()?.getChild() == ["element", "3"])
-        {
-            //print("here")
-            collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
-            //print(parser.getVariable(state_name: ["x"]).getInt())
-            //print(input)
-            return true
-            //exit(0)
-        }
-        if(stack.getParent()?.getParent()?.getChild() == ["element", "2"])
-        {
-            //print("here")
-            collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
-            //print(parser.getVariable(state_name: ["x"]).getInt())
-            //print(input)
-            return true
-            //exit(0)
-        }
-        if(stack.getParent()?.getParent()?.getChild() == ["element", "6"])
-        {
-            //print("here")
-            collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
-            //print(parser.getVariable(state_name: ["x"]).getInt())
-            //print(input)
-            return true
-            //exit(0)
-        }
-        if(stack.getParent()?.getParent()?.getChild() == ["element", "4"])
-        {
-            //print("here")
-            collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
-            //print(parser.getVariable(state_name: ["x"]).getInt())
-            //print(input)
-            return true
-            //exit(0)
-        }
-        if(stack.getParent()?.getParent()?.getChild() == ["element", "5"])
-        {
-            //print("here")
-            collectAndAdvance(parser: &parser, x: x, container_name: ["structure"], char: char)
-            //print(parser.getVariable(state_name: ["x"]).getInt())
-            //print(input)
-            return true
-            //exit(0)
-        }
+
 
 
     }
@@ -1800,7 +1777,7 @@ func isTrue(current_state_name: [String], parser: inout Parser, stack: ChildPare
     x = skipSpaces(input: input, i: x)
 
 
-    print(x, input)
+    //print(x, input)
     if(x + 3 < input.count)
     {
         if(  input[input.index(input.startIndex, offsetBy: String.IndexDistance(x))]  == "t"     &&
@@ -1811,7 +1788,7 @@ func isTrue(current_state_name: [String], parser: inout Parser, stack: ChildPare
             
            
             let upper_child = (stack.getParent()?.getChild())!
-            print(upper_child)
+            //print(upper_child)
             if(stack.child == ["make structure"])
             {
                 //print("failing")
@@ -2145,7 +2122,7 @@ func isKOutOfBounds(current_state_name: [String], parser: inout Parser, stack: C
                 // get the state
                 let state = getLastStateSaved(parser: &parser)
                 state.getData().setInt(value: Int(string)!)
-                state.Print(indent_level: 0)
+                //state.Print(indent_level: 0)
                 //exit(0)
                 // state.setInt(Int(parser.getVariable(state_name: ["structure"]).getString()))
                 return true
@@ -2161,7 +2138,7 @@ func isKOutOfBounds(current_state_name: [String], parser: inout Parser, stack: C
                 // get the state
                 let state = getLastStateSaved(parser: &parser)
                 state.getData().setFloat(value: Float(string)!)
-                state.Print(indent_level: 0)
+                //state.Print(indent_level: 0)
                 //exit(0)
                 return true
             }
@@ -2176,7 +2153,7 @@ func isKOutOfBounds(current_state_name: [String], parser: inout Parser, stack: C
                 // get the state
                 let state = getLastStateSaved(parser: &parser)
                 state.getData().setString(value: string)
-                state.Print(indent_level: 0)
+                //state.Print(indent_level: 0)
                 //exit(0)
                 return true
             }
@@ -2243,8 +2220,8 @@ func saveDataEntry(current_state_name: [String], parser: inout Parser, stack: Ch
     else if(upper_child == ["element", "4"])
     {
         let value_saved = parser.getVariable(state_name: ["structure"]).getString()
-        print("4 value saved")
-        print(value_saved)
+        //print("4 value saved")
+        //print(value_saved)
         parser.getVariable(state_name: ["value", "6"]).setString(value: value_saved)
         parser.getVariable(state_name: ["type", "6"]).setString(value: type_name)
 
@@ -2254,8 +2231,8 @@ func saveDataEntry(current_state_name: [String], parser: inout Parser, stack: Ch
     else if(upper_child == ["element", "5"])
     {
         let value_saved = parser.getVariable(state_name: ["structure"]).getString()
-        print("5 value saved")
-        print(value_saved)
+        //print("5 value saved")
+        //print(value_saved)
         parser.getVariable(state_name: ["value", "6"]).setString(value: value_saved)
         parser.getVariable(state_name: ["type", "6"]).setString(value: type_name)
         
@@ -2318,10 +2295,10 @@ func addDictEntry(current_state_name: [String], parser: inout Parser, stack: Chi
 }
 func printState(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
 {
-    print("in print state")
+    //print("in print state")
 
     let state = getLastStateSaved(parser: &parser)
-    state.Print(indent_level: 0)
+    //state.Print(indent_level: 0)
     return true
 }
 // for when the value being collected is part of a dict or list
@@ -2458,7 +2435,7 @@ func comma(current_state_name: [String], parser: inout Parser, stack: ChildParen
     var k = parser.getVariable(state_name: ["x"]).getInt()
     k = skipSpaces(input: current_word, i: k)
     //print("here ggggg")
-    print(k, current_word)
+    //print(k, current_word)
     if(!outOfBounds(i: k, size: current_word.count))
     {
         let char = current_word[current_word.index(current_word.startIndex, offsetBy: String.IndexDistance(k))]
@@ -2569,6 +2546,7 @@ func stringSaveValueType(current_state_name: [String], parser: inout Parser, sta
     return false
 
 }
+
 func saveInitDictEntry(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
 {
 
@@ -3092,12 +3070,12 @@ func arrayInit(element_location: [String], element_type: String, location_of_arr
 func arrayAdd(element_location: [String], element_type: String, location_of_array: inout ContextState, parser: inout Parser)
 {
 
-    print("here array add")
+    //print("here array add")
     let type = element_type
     let state = getLastStateSaved(parser: &parser)
     let element = parser.getVariable(state_name: element_location).getString()
     var add_array = false
-    print("type", type)
+    //print("type", type)
     if(type == "Int")
     {
         state.getData().addArray(type: type, value: Int(element)!)
@@ -3125,7 +3103,7 @@ func arrayAdd(element_location: [String], element_type: String, location_of_arra
 
         parser.getVariable(state_name: ["structure"]).setString(value: "")
 
-        state.Print(indent_level: 0)
+        //state.Print(indent_level: 0)
     }
 
 }
@@ -3135,9 +3113,9 @@ func addEntry2(current_state_name: [String], parser: inout Parser, stack: ChildP
     // structure is not being erased
     
     // entry and type are storing the other's data
-    print("addEntry2")
-    print(parser.getVariable(state_name: ["key", "entry", "1"]).getString())
-    print(parser.getVariable(state_name: ["key", "type", "1"]).getString())
+    //print("addEntry2")
+    //print(parser.getVariable(state_name: ["key", "entry", "1"]).getString())
+    //print(parser.getVariable(state_name: ["key", "type", "1"]).getString())
 
     var state = getLastStateSaved(parser: &parser)
     arrayInit(  element_location: ["key", "entry", "1"],
@@ -3149,9 +3127,9 @@ func addEntry2(current_state_name: [String], parser: inout Parser, stack: ChildP
 }
 func addEntry3(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
 {
-    print("addEntry3")
-    print(parser.getVariable(state_name: ["type", "6"]).getString())
-    print(parser.getVariable(state_name: ["value", "6"]).getString())
+    //print("addEntry3")
+    //print(parser.getVariable(state_name: ["type", "6"]).getString())
+    //print(parser.getVariable(state_name: ["value", "6"]).getString())
     var state = getLastStateSaved(parser: &parser)
 
     arrayAdd(  element_location: ["value", "6"],
@@ -3166,7 +3144,7 @@ func rightSquareBraketForEndOfList(current_state_name: [String], parser: inout P
     let x = parser.getVariable(state_name: ["x"]).getInt()
     let input = parser.getVariable(state_name: ["current_word"]).getString()
 
-    print(x, input)
+    //print(x, input)
     if(x == input.count-1)
     {
         if(  input[input.index(input.startIndex, offsetBy: String.IndexDistance(x))]  == "]")
