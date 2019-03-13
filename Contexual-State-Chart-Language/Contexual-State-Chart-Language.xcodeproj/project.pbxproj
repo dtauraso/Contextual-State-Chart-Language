@@ -12,6 +12,7 @@
 		630766E622191BD800649B26 /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630766E522191BD800649B26 /* Visit.swift */; };
 		630766EA22191D3500649B26 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630766E922191D3500649B26 /* Point.swift */; };
 		630766EE22191F6A00649B26 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630766ED22191F6A00649B26 /* Parser.swift */; };
+		6344615122382A5100F77E69 /* parsing_test_from_slides_functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6344615022382A5100F77E69 /* parsing_test_from_slides_functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		630766E522191BD800649B26 /* Visit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
 		630766E922191D3500649B26 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		630766ED22191F6A00649B26 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		6344615022382A5100F77E69 /* parsing_test_from_slides_functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parsing_test_from_slides_functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 		630766CC22191AE200649B26 = {
 			isa = PBXGroup;
 			children = (
+				6344615022382A5100F77E69 /* parsing_test_from_slides_functions.swift */,
 				630766D722191AE200649B26 /* Contexual-State-Chart-Language */,
 				630766D622191AE200649B26 /* Products */,
 			);
@@ -131,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6344615122382A5100F77E69 /* parsing_test_from_slides_functions.swift in Sources */,
 				630766EA22191D3500649B26 /* Point.swift in Sources */,
 				630766EE22191F6A00649B26 /* Parser.swift in Sources */,
 				630766D922191AE200649B26 /* main.swift in Sources */,

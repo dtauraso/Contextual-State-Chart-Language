@@ -3,11 +3,14 @@ start
 		input
 			Data
 				["(",  "5", "x", "7", "8", ")"]
+		i
+			Data
+				0
 		-(
 			Next
 				letters_and_digits
 			Function
-				returnTrue
+				leftParens
 
 		letters_and_digits
 			Children
@@ -16,49 +19,49 @@ start
 						Next
 							letters / 0
 						Function
-							returnTrue
+							isDigit
 					1
 						Next
 							digit / 2
 						Function
-							returnTrue
+							isDigit
 					2
 					3
 						Next
 							digit / 4
 						Function
-							returnFalse
+							isDigit
 					4
 						Next
 							letters / 2
 						Function
-							returnFalse
+							isDigit
 				letters
 					-0
 						Next
 							digit / 1
 						Function
-							returnTrue
+							isLetter
 					1
 						Next
 							digit / 3
 						Function
-							returnFalse
+							isLetter
 					2
 
-				No letters and no digits
+				-No letters and no digits
 					Next
 						)
 					Function
 
-						returnTrue
+						noLettersAndNoDigits
 			Function
 				returnTrue
 		)
 			Next
 				None
 			Function
-				returnFalse
+				rightParens
 		None
 	Function
 		returnTrue

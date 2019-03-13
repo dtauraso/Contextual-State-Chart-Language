@@ -7,6 +7,14 @@
 //
 
 import Foundation
+func returnTrue(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
+{
+    return true
+}
+func returnFalse(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
+{
+    return false
+}
 // ([String], inout Parser, ChildParent) -> Bool
 let function_name_to_function: [String: ([String], inout Parser, ChildParent) -> Bool] = [
     "returnTrue"                    : returnTrue,
@@ -115,7 +123,18 @@ let function_name_to_function: [String: ([String], inout Parser, ChildParent) ->
     "rightSquareBraketForEndOfList" : rightSquareBraketForEndOfList
 
 ]
+let function_name_to_function2: [String: (StateMetadata) -> Bool] = [
 
+    // example from slides functions
+    "leftParens"                    : leftParens,
+    "rightParens"                   : rightParens,
+    "isDigit"                       : isDigit,
+    "isLetter"                      : isLetter,
+    "noLettersAndNoDigits"          : noLettersAndNoDigits,
+    "returnTrue"                    : returnTrue,
+    "returnFalse"                   : returnFalse,
+
+    ]
 func deleteSecondToNNewLines(input: String) -> String
 {
     var new_input = String()
@@ -288,7 +307,19 @@ func run2()
 
     let matrix = name_state_table[["sparse_matrix"]]!.getData().data["[Point: ContextState]"] as! [Point: ContextState]
     let point_table = name_state_table[["point_table"]]!.getData().data["[[String]: Point]"] as! [[String]: Point]
+//  let function_name_to_function2: [String: (StateMetadata) -> Bool] = [
+/*
+["(",  "5", "x", "7", "8", ")"]
+["(",  "y", "5", "7", "d", ")"]
+["(", ")"]
 
+*/
+    let inputs: [[String]] = [ ["(",  "5", "x", "7", "8", ")"],
+                                ["(",  "y", "5", "7", "d", ")"],
+                                ["(", ")"]
+                            ]
+    for i in (0..<inputs.count)
+    {
 // make another visitor class
         let visitor_class2: Visit = Visit.init(next_states: [["start"]],
                                   current_state_name:    ["states", "state"],
@@ -305,12 +336,14 @@ func run2()
                                   matrix: matrix,
                                   point_table: point_table
                                   )
-    
-    visitor_class2.visitStates2(start_state: visitor_class2.getState(state_name: ["start"])
+        visitor_class2.getState(state_name: ["input"]).getData().setStringList(value: inputs[i])
+        visitor_class2.visitStates2(start_state: visitor_class2.getState(state_name: ["start"])
                     /*, end_state: ContextState*/,
                     parser: &parsing_object,   // for returnTrue only
-                    function_name_to_function: function_name_to_function)
+                    function_name_to_function: function_name_to_function2)
+         visitor_class2.getState(state_name: ["i"]).getData().setInt(value: 0 )
 
+    }
     //var json_data = data.data(using: .utf8)!
     //print(json_data)
     //let jsonDecoder = JSONDecoder()

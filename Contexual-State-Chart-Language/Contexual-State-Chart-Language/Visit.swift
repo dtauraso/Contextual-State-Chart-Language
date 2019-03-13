@@ -7,14 +7,7 @@
 //
 
 import Foundation
-func returnTrue(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
-{
-    return true
-}
-func returnFalse(current_state_name: [String], parser: inout Parser, stack: ChildParent) -> Bool
-{
-    return false
-}
+
 class ChildParent {
 
     var child: [String]
@@ -756,7 +749,7 @@ class Visit {
     func visitStates2(start_state: ContextState
                         /*, end_state: ContextState*/,
                         parser: inout Parser,
-                        function_name_to_function: [String: ([String], inout Parser, ChildParent) -> Bool])
+                        function_name_to_function: [String: (StateMetadata) -> Bool])
     {
         // the user will have to make a map from state to function
         // set current state to start_state
@@ -855,9 +848,9 @@ class Visit {
                 //print(function_call_name)
                 //print("function call name", function_call_name)
                 //print()
-                let function : ([String], inout Parser, ChildParent) -> Bool = function_name_to_function[function_call_name]!
+                let function : (StateMetadata) -> Bool = function_name_to_function[function_call_name]!
                 //print(function)
-                let did_function_pass: Bool = function(self.current_state_name, &parser, self.bottom_tracker)
+                let did_function_pass: Bool = function(StateMetadata(current_state_name: self.current_state_name, parser: &parser, stack: self.bottom_tracker))
                 
                 if(did_function_pass)
                 {
@@ -930,10 +923,15 @@ class Visit {
                 print("error at ")
                 for next_state in self.next_states
                 {
-                    print(next_state, parser.getState(state_name: next_state).getFunctionName())
+                    print(next_state, self.getState(state_name: next_state).getFunctionName())
                 }
+                print("test failed")
+                print(self.getState(state_name: ["input"]).getData().getStringList())
                 //print(self.next_states)
-                break
+                print("state machine is done\n")
+                print("total states run", self.ii)
+
+                return
                 /*
                     //printf(getIndents(indents), next_states, "on");
                     level_id_state_id* point = ht_search2(state_x_y_table, current_state_name);
@@ -951,7 +949,8 @@ class Visit {
             let point2: ContextState = getState(state_name: self.current_state_name)
 
             print("winning state", self.current_state_name, "f=", point2.function_name)
-            //print("next states", self.next_states)
+            print(self.getState(state_name: ["i"]).getData().getInt())
+            print("next states", self.next_states)
             //printStack2(bottom_tracker: self.bottom_tracker)
             //print()
 
@@ -963,9 +962,11 @@ class Visit {
         }
         print("state machine is done\n")
         print("total states run", self.ii)
-    
-        let matrix = name_state_table[["sparse_matrix"]]!.getData().data["[Point: ContextState]"] as! [Point: ContextState]
-        let point_table = name_state_table[["point_table"]]!.getData().data["[[String]: Point]"] as! [[String]: Point]
+        print("test passed")
+        //print(self.getState(state_name: ["input"]).getData().getStringList())
+
+        //let matrix = name_state_table[["sparse_matrix"]]!.getData().data["[Point: ContextState]"] as! [Point: ContextState]
+        //let point_table = name_state_table[["point_table"]]!.getData().data["[[String]: Point]"] as! [[String]: Point]
         //print(matrix.count)
         //print(point_table)
         
@@ -975,7 +976,7 @@ class Visit {
         }*/
         //exit(1)
         
-        let start_node = matrix[Point.init(l: 0, s: 0)]!
+        //let start_node = matrix[Point.init(l: 0, s: 0)]!
         /*
         let points = matrix.keys
         var index = points.startIndex
