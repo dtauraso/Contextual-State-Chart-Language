@@ -36,7 +36,6 @@ func leftParens(state_data: StateMetadata) -> Bool
 
     let input = state_data.parser.getVariable2(state_name: ["input"]).getStringList()
     let i = state_data.parser.getVariable2(state_name: ["i"]).getInt()
-    print(i)
     if(i >= input.count)
     {
         return false
