@@ -166,23 +166,12 @@ https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual
 	another state
 		Next
 			name_2 / name_3
+## program test from the updated slides
+Input:
+https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual-State-Chart-Language/parsing_test_from_slides.txt
 
-## Parsing only examples
-https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual-State-Chart-Language/Contexual-State-Chart-Language/parsing_only_input.txt
-
-Log from above input.  The tree is only printed out in the end because all states were sucessfully parsed.
-https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual-State-Chart-Language/Contexual-State-Chart-Language/result_from_parsing_only_input.txt
-
-
-https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual-State-Chart-Language/Contexual-State-Chart-Language/data_and_dead_state_parsing_only_input.txt
-
-Log from above input.  The tree is not printed out because the not all state have been sucessfully parsed.  The error shows how far it went
-https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual-State-Chart-Language/Contexual-State-Chart-Language/result_from_data_and_dead_states_only.txt
-
-
-It correctly parses all examples except for the swift lists and swift dicts (not the initializers).
-
-Update: It recognizes swift dicts using values of types string, int, and float.
+Output from
+https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual-State-Chart-Language/test_from_slides_passed.txt
 
 ## How the parser works and why
     Depth first traversal is used to save the name parts of each state.
