@@ -166,6 +166,8 @@ https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual
 	another state
 		Next
 			name_2 / name_3
+## program status
+	It works.
 ## program test from the updated slides
 Input:
 https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual-State-Chart-Language/parsing_test_from_slides.txt
