@@ -1,0 +1,349 @@
+entered visit function
+state machine is done
+
+total states run 546
+start
+  Children
+      -(
+        Next
+          letters_and_digits
+        Function
+          leftParens
+        Parents
+          start
+        Data
+          [:]
+      input
+
+        Function
+          
+        Parents
+          start
+        Data
+          [String] (, 5, x, 7, 8, )
+      i
+
+        Function
+          
+        Parents
+          start
+        Data
+          Int 0
+      letters_and_digits
+        Children
+            digit
+             -0
+              Next
+                letters / 0
+              Function
+                isDigit
+              Parents
+                letters_and_digits
+              Data
+                [:]
+            letters
+             -0
+              Next
+                digit / 1
+              Function
+                isLetter
+              Parents
+                letters_and_digits
+              Data
+                [:]
+            -No letters and no digits
+              Next
+                )
+              Function
+                noLettersAndNoDigits
+              Parents
+                letters_and_digits
+              Data
+                [:]
+            digit
+             1
+              Next
+                digit / 2
+              Function
+                isDigit
+              Parents
+                letters_and_digits
+              Data
+                [:]
+            digit
+             2
+
+              Function
+                returnTrue
+              Parents
+                letters_and_digits
+              Data
+                [:]
+            digit
+             3
+              Next
+                digit / 4
+              Function
+                isDigit
+              Parents
+                letters_and_digits
+              Data
+                [:]
+            digit
+             4
+              Next
+                letters / 2
+              Function
+                isDigit
+              Parents
+                letters_and_digits
+              Data
+                [:]
+            letters
+             1
+              Next
+                digit / 3
+              Function
+                isLetter
+              Parents
+                letters_and_digits
+              Data
+                [:]
+            letters
+             2
+
+              Function
+                returnTrue
+              Parents
+                letters_and_digits
+              Data
+                [:]
+
+        Function
+          returnTrue
+        Parents
+          start
+        Data
+          [:]
+      )
+        Next
+          None
+        Function
+          rightParens
+        Parents
+          start
+        Data
+          [:]
+      None
+
+        Function
+          returnTrue
+        Parents
+          start
+        Data
+          [:]
+
+  Function
+    returnTrue
+  Parents
+    root
+  Data
+    [:]
+
+entered visit function
+stack
+
+["start"]
+
+
+winning state ["start"] f= returnTrue
+0
+next states [["("]]
+0
+stack
+
+["("]
+["start"]
+
+
+winning state ["("] f= leftParens
+1
+next states [["letters_and_digits"]]
+stack
+
+["letters_and_digits"]
+["start"]
+
+
+winning state ["letters_and_digits"] f= returnTrue
+1
+next states [["digit", "0"], ["letters", "0"], ["No letters and no digits"]]
+stack
+
+["digit", "0"]
+["letters_and_digits"]
+["start"]
+
+
+winning state ["digit", "0"] f= isDigit
+2
+next states [["letters", "0"]]
+stack
+
+["letters", "0"]
+["letters_and_digits"]
+["start"]
+
+
+winning state ["letters", "0"] f= isLetter
+3
+next states [["digit", "1"]]
+stack
+
+["digit", "1"]
+["letters_and_digits"]
+["start"]
+
+
+winning state ["digit", "1"] f= isDigit
+4
+next states [["digit", "2"]]
+stack
+
+["digit", "2"]
+["letters_and_digits"]
+["start"]
+
+
+winning state ["digit", "2"] f= returnTrue
+4
+next states []
+state machine is done
+
+total states run 7
+test passed
+entered visit function
+stack
+
+["start"]
+
+
+winning state ["start"] f= returnTrue
+0
+next states [["("]]
+0
+stack
+
+["("]
+["start"]
+
+
+winning state ["("] f= leftParens
+1
+next states [["letters_and_digits"]]
+stack
+
+["letters_and_digits"]
+["start"]
+
+
+winning state ["letters_and_digits"] f= returnTrue
+1
+next states [["digit", "0"], ["letters", "0"], ["No letters and no digits"]]
+stack
+
+["letters", "0"]
+["letters_and_digits"]
+["start"]
+
+
+winning state ["letters", "0"] f= isLetter
+2
+next states [["digit", "1"]]
+stack
+
+["digit", "1"]
+["letters_and_digits"]
+["start"]
+
+
+winning state ["digit", "1"] f= isDigit
+3
+next states [["digit", "2"]]
+stack
+
+["digit", "2"]
+["letters_and_digits"]
+["start"]
+
+
+winning state ["digit", "2"] f= returnTrue
+3
+next states []
+state machine is done
+
+total states run 6
+test passed
+entered visit function
+stack
+
+["start"]
+
+
+winning state ["start"] f= returnTrue
+0
+next states [["("]]
+0
+stack
+
+["("]
+["start"]
+
+
+winning state ["("] f= leftParens
+1
+next states [["letters_and_digits"]]
+stack
+
+["letters_and_digits"]
+["start"]
+
+
+winning state ["letters_and_digits"] f= returnTrue
+1
+next states [["digit", "0"], ["letters", "0"], ["No letters and no digits"]]
+stack
+
+["No letters and no digits"]
+["letters_and_digits"]
+["start"]
+
+
+winning state ["No letters and no digits"] f= noLettersAndNoDigits
+1
+next states [[")"]]
+stack
+
+[")"]
+["letters_and_digits"]
+["start"]
+
+
+winning state [")"] f= rightParens
+2
+next states [["None"]]
+stack
+
+["None"]
+["letters_and_digits"]
+["start"]
+
+
+winning state ["None"] f= returnTrue
+2
+next states []
+state machine is done
+
+total states run 6
+test passed
+Program ended with exit code: 0
