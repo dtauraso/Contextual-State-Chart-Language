@@ -179,7 +179,11 @@ https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual
     Depth first traversal is used to save the name parts of each state.
     Breath first traversal is used to save the remaining attributes of each state.
    
-    The goal for the parser is to be straghtforward to change in the future, and as a result, certain decisions were made.  One decision was to use the contextual state chart representation to be the control flow model.  The other decision was to use iteration.  Both traversals are done iteratively.  Recursion was not used, because the focus was on the many unique situations the small groups of lines in the file presented.  An iterative approach seemed to fit best at the time.
+    The goal for the parser is to be straghtforward to change in the future, and as a result, certain decisions were made.
+    One decision was to use the contextual state chart representation to be the control flow model.
+    The other decision was to use iteration.  Both traversals are done iteratively.
+    Recursion was not used, because the focus was on the many unique situations the small groups of lines in the file presented.
+    An iterative approach seemed to fit best at the time.
 
 ## Let’s say you are finished with CSCL(Contextual State Chart Language).  How would you use it?
 
