@@ -1,6 +1,8 @@
 # Contexual-State-Chart-Language
 This is an extracurricular research project.  I’m researching the question “Is there a way to code programs in a way that is cognitively more straightforward to humans than what we currently have?”
 
+The idea to solve this question is to use some research from General AI mentioned below.
+
 Note: This is a supplemental language.  It is not meant to replace programming languages.  You will still use your primary langauge: Python, JS, Java, etc.
 ## Inspiration
 
