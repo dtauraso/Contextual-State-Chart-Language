@@ -10,17 +10,27 @@ Note: This is a supplemental language.  It is not meant to replace programming l
   
   **On Intelligence** by Jeff Hawkins
   
-  first white paper
+  First white paper:
   
   
   https://numenta.com/assets/pdf/whitepapers/hierarchical-temporal-memory-cortical-learning-algorithm-0.2.1-en.pdf
 
+  The below images show how the HTM network models contex sensitive sequences:
+ 
+  https://www.frontiersin.org/files/Articles/174222/fncir-10-00023-HTML/image_m/fncir-10-00023-g002.jpg
+  https://www.frontiersin.org/files/Articles/174222/fncir-10-00023-HTML/image_m/fncir-10-00023-g003.jpg
+	
+  The page these came from is at the bottom of the readme.
+
   The main ideas I gathered from these
+  
 		a state modeling neurons can be represented in an arbitrary number of contexts
+		
 		context sensitive sequences
+		
 		context sensitive hierarchy of sequences
 
-
+  
 
 ## Why
 
@@ -227,5 +237,9 @@ Folding for levels you don’t want to see
 Maybe even an api for locks, so this can simulate an operating system directly
 
 
+## Other sources:
 
+	
+  https://www.frontiersin.org/articles/10.3389/fncir.2016.00023/full
+	
 
