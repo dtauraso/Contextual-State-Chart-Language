@@ -115,7 +115,7 @@ https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual
 					sub_state_name_1
 				
 	name_0 and name_1 are names of the state
-	the indents indicate context and dimension(fix in slides)
+	the indents indicate context and dimension
 	
 	the “-“ at the last name tells you if it’s going to be run as a next state with it’s siblings
 	you can use “-“ and “&” like above
