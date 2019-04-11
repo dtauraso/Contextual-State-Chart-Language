@@ -238,7 +238,9 @@ Maybe even an api for locks, so this can simulate an operating system directly
 * These are about Numenta, a company Jeff Hawkins cofounded.
   https://www.frontiersin.org/articles/10.3389/fncir.2016.00023/full
 	
-  illustrations from https://www.frontiersin.org/articles/10.3389/fncir.2016.00023/full
+  Illustrations from
+  
+	https://www.frontiersin.org/articles/10.3389/fncir.2016.00023/full
 
   https://numenta.com/assets/pdf/whitepapers/hierarchical-temporal-memory-cortical-learning-algorithm-0.2.1-en.pdf
 
