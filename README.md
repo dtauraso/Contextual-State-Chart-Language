@@ -6,15 +6,15 @@ The idea to solve this question is to use some research from General AI mentione
 Note: This is a supplemental language.  It is not meant to replace programming languages.  You will still use your primary langauge: Python, JS, Java, etc.
 ## Inspiration
 
-  DFA’s from taking CS 460 with Professor Watts
+  DFA’s from taking CS 460 with Dr. Watts
   
   **On Intelligence** by Jeff Hawkins
   
 
   The below images show how the HTM* network models contex sensitive sequences:
  
-  https://www.frontiersin.org/files/Articles/174222/fncir-10-00023-HTML/image_m/fncir-10-00023-g002.jpg*
-  https://www.frontiersin.org/files/Articles/174222/fncir-10-00023-HTML/image_m/fncir-10-00023-g003.jpg*
+  https://www.frontiersin.org/files/Articles/174222/fncir-10-00023-HTML/image_m/fncir-10-00023-g002.jpg *
+  https://www.frontiersin.org/files/Articles/174222/fncir-10-00023-HTML/image_m/fncir-10-00023-g003.jpg *
 	
   The page these came from is at the bottom of the readme.
 
