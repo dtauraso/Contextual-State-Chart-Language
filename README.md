@@ -75,7 +75,7 @@ Here is the parsing graph
 https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual-State-Chart-Language/Contexual-State-Chart-Language/parsing_graph.pdf
 
 ## About the language
-	Here is a visual description of an example of the language and how it is represented in the program.
+   Here is a visual description of an example of the language and how it is represented in the program.
 	https://github.com/dtauraso/Contexual-State-Chart-Language/blob/master/Contexual-State-Chart-Language/Contexual-State-Chart-Language/Contextual%20State%20Chart%20Language%20internal%20representation.pdf
 ## program status
 	It works.
